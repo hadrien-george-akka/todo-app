@@ -1,10 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Todo, mockTodos } from '../../model/todo.interface';
 
 /**
- * Wrapper around the Procedure Module
+ * Display the current Todos list
  */
 @Component({
   templateUrl: './todos-list.component.html'
 })
-export class TodosListComponent {
+export class TodosListComponent implements OnInit {
+
+  private todos: Todo[];
+
+  constructor() {
+    this.todos = mockTodos();
+  }
+
+  ngOnInit() {
+
+  }
 }

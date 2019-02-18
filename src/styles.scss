@@ -1,0 +1,48 @@
+@import 'app/theme/sass/variables';
+
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  margin: 0;
+  font-family: $font-body;
+  background-color: $color-body;
+}
+
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 35px;
+  background-color:$color-body;
+}
+
+.title1 {
+  font-family: $font-title;
+  font-weight: 700;
+  font-size: $font-size-title1;
+}
+
+.title2 {
+  font-family: $font-title;
+  font-weight: 600;
+  font-size: $font-size-title2;
+  margin-top: -30px !important;
+}
+
+.content {
+  display: block;
+  max-width: 750px;
+  margin: auto;
+  margin-top: 35px;
+  background-color: $color-body;
+}
+
+
+.no-margin {
+  margin: 0;
+}
+
+.no-padding {
+  padding: 0;
+}
