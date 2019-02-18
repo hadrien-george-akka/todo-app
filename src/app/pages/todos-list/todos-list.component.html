@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-header class="title-small">
+    TODO
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngFor="let todo of todos" fxLayout="column">
+      <mat-checkbox [checked]="todo.isComplete">
+        {{ todo.title }}
+      </mat-checkbox>
+    </div>
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <mat-card-header class="title-small">
+    DONE
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngFor="let todo of completedTodos" fxLayout="column">
+      <mat-checkbox [checked]="todo.isComplete">
+        <s>{{ todo.title }}</s>
+      </mat-checkbox>
+    </div>
+  </mat-card-content>
+</mat-card>
