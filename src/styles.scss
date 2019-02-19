@@ -5,7 +5,9 @@
 body {
   margin: 0;
   font-family: $font-body;
+  font-size: $font-size-body;
   background-color: $color-body;
+  // font-weight: 300;
 }
 
 #header {
@@ -25,7 +27,7 @@ body {
 
 .title2 {
   font-family: $font-title;
-  font-weight: 600;
+  font-weight: 700;
   font-size: $font-size-title2;
   margin-top: -30px !important;
 }
