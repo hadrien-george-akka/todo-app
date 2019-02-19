@@ -2,13 +2,9 @@ export interface Todo {
   id: number;
   title: string;
   description?: string;
-  state: StateTodo;
+  isComplete: boolean;
 }
 
-export enum StateTodo {
-  INCOMPLETE = 0,
-  COMPLETE = 1
-}
 
 export function mockTodos(): Todo[] {
   return [
@@ -18,12 +14,28 @@ export function mockTodos(): Todo[] {
       description: `-Oeufs
       - Pain
       - Céréales`,
-      state: 0
+      isComplete: false
     },
     {
       id: 2,
       title: 'Déposer le chèque',
-      state: 1
+      isComplete: true
+    },
+    {
+      id: 3,
+      title: 'Appeler maman',
+      isComplete: true
+    },
+    {
+      id: 4,
+      title: 'Promener le chien',
+      isComplete: false
+    },
+    {
+      id: 5,
+      title: 'Reserver le billet de train',
+      description: 'Train 02/06/19 Départ TOULOUSE à 10:23 - Arrivée PARIS à 17:42',
+      isComplete: false
     }
   ];
 }

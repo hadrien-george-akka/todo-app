@@ -1,3 +1,4 @@
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import 'app/theme/sass/variables';
 
 /* You can add global styles to this file, and also import other style files */
@@ -19,17 +20,29 @@ body {
   background-color:$color-body;
 }
 
-.title1 {
+%font-title {
   font-family: $font-title;
-  font-weight: 700;
-  font-size: $font-size-title1;
 }
 
-.title2 {
-  font-family: $font-title;
-  font-weight: 700;
-  font-size: $font-size-title2;
-  margin-top: -30px !important;
+.title {
+  &-big {
+    @extend %font-title;
+    font-weight: 700;
+    font-size: $font-size-title1;
+  }
+
+  &-medium {
+    @extend %font-title;
+    font-weight: 600;
+    font-size: $font-size-title2;
+    margin-top: -30px !important;
+  }
+
+  &-small {
+    @extend %font-title;
+    font-weight: 600;
+    font-size: $font-size-title3;
+  }
 }
 
 .content {
@@ -47,4 +60,14 @@ body {
 
 .no-padding {
   padding: 0;
+}
+
+.mat-card {
+  box-shadow: 0 2px 1px -1px rgba(0,0,0,.4), 0 1px 1px 0 rgba(0,0,0,.32), 0 1px 3px 0 rgba(0,0,0,.28) !important;
+}
+
+.mat-card-content {
+  font-size: $font-size-body;
+  font-family: $font-body;
+  padding-left:20px;
 }

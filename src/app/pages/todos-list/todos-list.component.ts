@@ -9,10 +9,11 @@ import { Todo, mockTodos } from '../../model/todo.interface';
 })
 export class TodosListComponent implements OnInit {
 
-  private todos: Todo[];
+  todos: Todo[];
 
   constructor() {
     this.todos = mockTodos();
+    console.log(this.todos);
   }
 
   ngOnInit() {

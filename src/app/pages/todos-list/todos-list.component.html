@@ -1,1 +1,12 @@
-<h3>I'm todos list</h3>
+<mat-card>
+  <mat-card-header class="title-small">
+    TODO
+  </mat-card-header>
+  <mat-card-content>
+    <div fxLayout="column">
+      <div *ngFor="let todo of todos">
+        {{ todo.title }}
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
