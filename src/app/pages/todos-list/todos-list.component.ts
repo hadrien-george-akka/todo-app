@@ -9,14 +9,19 @@ import { Todo, mockTodos } from '../../model/todo.interface';
 })
 export class TodosListComponent implements OnInit {
 
+  /** Array of all existing todos */
+  allTodos: Todo[];
+  /** Array of uncomplete todos */
   todos: Todo[];
+  /** Array of complete todos */
+  completedTodos: Todo[];
 
   constructor() {
-    this.todos = mockTodos();
-    console.log(this.todos);
+    this.allTodos = mockTodos();
   }
 
   ngOnInit() {
-
+    this.todos = this.allTodos.filter(todo => todo.isComplete === false);
+    this.completedTodos = this.allTodos.filter(todo => todo.isComplete === true);
   }
 }

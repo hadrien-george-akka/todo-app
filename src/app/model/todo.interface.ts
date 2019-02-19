@@ -5,7 +5,9 @@ export interface Todo {
   isComplete: boolean;
 }
 
-
+/**
+ * Return an array of mocked todos
+ */
 export function mockTodos(): Todo[] {
   return [
     {

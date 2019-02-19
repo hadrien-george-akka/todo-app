@@ -1,4 +1,4 @@
-@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import 'app/theme/sass/variables';
 
 /* You can add global styles to this file, and also import other style files */
@@ -62,12 +62,19 @@ body {
   padding: 0;
 }
 
+// ----------------------------------- MATERIAL ----------------------------------- // 
+
 .mat-card {
   box-shadow: 0 2px 1px -1px rgba(0,0,0,.4), 0 1px 1px 0 rgba(0,0,0,.32), 0 1px 3px 0 rgba(0,0,0,.28) !important;
+  margin: 20px;
+}
+
+.mat-card-content, .mat-checkbox {
+  font-size: $font-size-body;
+  font-family: $font-body;
 }
 
 .mat-card-content {
-  font-size: $font-size-body;
-  font-family: $font-body;
   padding-left:20px;
 }
+
