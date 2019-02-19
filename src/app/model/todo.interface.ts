@@ -20,7 +20,7 @@ export function mockTodos(): Todo[] {
     },
     {
       id: 2,
-      title: 'Desposit christmas check',
+      title: 'Deposit christmas check',
       isComplete: true
     },
     {

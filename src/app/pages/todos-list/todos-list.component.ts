@@ -3,7 +3,7 @@ import { Todo, mockTodos } from '../../model/todo.interface';
 
 import { Store } from '@ngrx/store';
 import { AppState } from './../../app.reducer';
-import { getVisibleTodos } from 'src/app/model/todo.selectors';
+import { getVisibleTodos } from '../../model/todo.selectors';
 import * as TodoActions from './../../model/todo.actions';
 import * as FilterActions from './../../model/filter/filter.actions';
 
@@ -16,11 +16,11 @@ import * as FilterActions from './../../model/filter/filter.actions';
 export class TodosListComponent implements OnInit {
 
   /** Array of all existing todos */
-  allTodos: Todo[];
-  /** Array of uncomplete todos */
   todos: Todo[];
+  /** Array of uncomplete todos */
+  activeTodos: Todo[];
   /** Array of complete todos */
-  completedTodos: Todo[];
+  completeTodos: Todo[];
 
   test: Todo[];
 
@@ -32,38 +32,57 @@ export class TodosListComponent implements OnInit {
   ) {
     // this.allTodos = mockTodos();
     this.store.dispatch(new TodoActions.PopulateTodosAction(mockTodos()));
+    this.getActiveTodos();
   }
-
+  
   ngOnInit() {
-
-    this.readTodosState();
-
-    // this.todos = this.returnActiveTodos(this.allTodos);
-    this.completedTodos = this.returnCompletedTodos(this.allTodos);
+    this.getCompleteTodos();
 
   }
 
-  private readTodosState() {
+  /**
+   * Populate the todos variables in function of filter
+   * @param state String to filter
+   * 'active' will return only active todos
+   * 'complete' will return only complete todos
+   * any other value will return all todos
+   */
+  private populateTodosByState(state?: string) {
     this.store.select(getVisibleTodos)
     .subscribe(todos => {
-      console.log(todos);
-      this.allTodos = todos;
+      console.log(state, todos)
+      switch (state) {
+        case TodoState.ACTIVE:
+          this.activeTodos = todos;
+          break;
+        case TodoState.COMPLETE:
+          this.completeTodos = todos;
+          break;
+        default:
+          this.todos = todos;
+      }
     });
   }
 
   /**
-   * Return an array of only completed todos from an array of todos
-   * @param todos Array of todos
+   * Filter todos by state and populate the activeTodo variable with all complete todos
    */
-  returnCompletedTodos(todos: Todo[]): Todo[] {
-    return todos.filter(todo => todo.isComplete === true);
+  getCompleteTodos() {
+    this.store.dispatch(new FilterActions.SetFilterAction('SHOW_COMPLETED'));
+    this.populateTodosByState('complete');
   }
 
   /**
-   * Return an array of only not completed todos from an array of todos
-   * @param todos Array of todos
+   * Filter todos by state and populate the activeTodo variable with all active todos
    */
-  returnActiveTodos() {
+  getActiveTodos() {
     this.store.dispatch(new FilterActions.SetFilterAction('SHOW_ACTIVE'));
+    this.populateTodosByState('active');
   }
+
+}
+
+export enum TodoState {
+  ACTIVE = 'active',
+  COMPLETE = 'complete'
 }
