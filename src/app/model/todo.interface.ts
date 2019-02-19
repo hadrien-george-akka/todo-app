@@ -12,31 +12,31 @@ export function mockTodos(): Todo[] {
   return [
     {
       id: 1,
-      title: 'Faire les courses',
-      description: `-Oeufs
-      - Pain
-      - Céréales`,
+      title: 'Groceries',
+      description: `-Eggs
+      - Bread
+      - Cereal`,
       isComplete: false
     },
     {
       id: 2,
-      title: 'Déposer le chèque',
+      title: 'Desposit christmas check',
       isComplete: true
     },
     {
       id: 3,
-      title: 'Appeler maman',
+      title: 'Call mom',
       isComplete: true
     },
     {
       id: 4,
-      title: 'Promener le chien',
+      title: 'Walk the dog',
       isComplete: false
     },
     {
       id: 5,
-      title: 'Reserver le billet de train',
-      description: 'Train 02/06/19 Départ TOULOUSE à 10:23 - Arrivée PARIS à 17:42',
+      title: 'Book train ticket',
+      description: 'Train 02/06/19 Departure TOULOUSE at 10:23 - Arrival PARIS at 17:42',
       isComplete: false
     }
   ];
