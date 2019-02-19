@@ -13,14 +13,12 @@ export function mockTodos(): Todo[] {
     {
       id: 1,
       title: 'Groceries',
-      description: `-Eggs
-      - Bread
-      - Cereal`,
+      description: '-Eggs \n- Bread\n- Cereal',
       isComplete: false
     },
     {
       id: 2,
-      title: 'Desposit christmas check',
+      title: 'Deposit christmas check',
       isComplete: true
     },
     {

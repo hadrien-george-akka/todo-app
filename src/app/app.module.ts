@@ -5,6 +5,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { PagesModule } from './pages/pages.module';
 import { AppRoutingModule } from './app-routing.module';
+import { StoreModule } from '@ngrx/store';
+import { rootReducer } from './app.reducer';
+
+import { TodoService } from './core/services/todo.service';
 
 @NgModule({
   declarations: [
@@ -14,9 +18,12 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserModule,
     RouterModule,
     PagesModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot(rootReducer)
   ],
-  providers: [],
+  providers: [
+    TodoService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
