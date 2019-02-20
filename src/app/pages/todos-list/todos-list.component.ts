@@ -6,6 +6,7 @@ import { AppState } from './../../app.reducer';
 import { getVisibleTodos } from '../../model/todo.selectors';
 import * as TodoActions from './../../model/todo.actions';
 import * as FilterActions from './../../model/filter/filter.actions';
+import { FormControl } from '@angular/forms';
 
 /**
  * Display the current Todos list
@@ -22,7 +23,8 @@ export class TodosListComponent implements OnInit {
   /** Array of complete todos */
   completeTodos: Todo[];
 
-  test: Todo[];
+  todoStateCtrl: FormControl;
+
 
   /**
    * Component dependencies
@@ -32,12 +34,12 @@ export class TodosListComponent implements OnInit {
   ) {
     // this.allTodos = mockTodos();
     this.store.dispatch(new TodoActions.PopulateTodosAction(mockTodos()));
-    this.getActiveTodos();
   }
-  
-  ngOnInit() {
-    this.getCompleteTodos();
 
+  ngOnInit() {
+
+    this.getActiveTodos();
+    // this.getCompleteTodos();
   }
 
   /**
@@ -50,7 +52,6 @@ export class TodosListComponent implements OnInit {
   private populateTodosByState(state?: string) {
     this.store.select(getVisibleTodos)
     .subscribe(todos => {
-      console.log(state, todos)
       switch (state) {
         case TodoState.ACTIVE:
           this.activeTodos = todos;

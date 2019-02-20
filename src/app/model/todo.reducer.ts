@@ -14,7 +14,7 @@ export function TodosReducer(state: Todo[] = initialState, action: TodoActions.T
         if (action.id === todo.id) {
           return {
             ...todo,
-            completed: !todo.isComplete
+            isComplete: !todo.isComplete
           };
         } else {
           return todo;

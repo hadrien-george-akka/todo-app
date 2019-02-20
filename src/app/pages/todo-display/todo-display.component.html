@@ -1,0 +1,9 @@
+
+<form [formGroup]="todoFormGroup">
+  <mat-checkbox formControlName="stateTodoCtrl">
+    <div [ngClass]="{'strike-text': isTodosComplete}">
+      {{ todo.title }}
+    </div>
+  </mat-checkbox>
+
+</form>
