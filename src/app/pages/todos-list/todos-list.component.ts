@@ -7,6 +7,7 @@ import { getVisibleTodos } from '../../model/todo.selectors';
 import * as TodoActions from './../../model/todo.actions';
 import * as FilterActions from './../../model/filter/filter.actions';
 import { FormControl } from '@angular/forms';
+import { TodoService } from '../shared/todo.service';
 
 /**
  * Display the current Todos list
@@ -30,16 +31,20 @@ export class TodosListComponent implements OnInit {
    * Component dependencies
    */
   constructor(
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private todoService: TodoService
   ) {
     // this.allTodos = mockTodos();
-    this.store.dispatch(new TodoActions.PopulateTodosAction(mockTodos()));
+    this.store.dispatch(new TodoActions.PopulateTodosAction(
+      this.todoService.getTodoList()
+    ));
   }
 
   ngOnInit() {
 
-    this.getActiveTodos();
+    // this.getActiveTodos();
     // this.getCompleteTodos();
+    this.populateTodosByState();
   }
 
   /**
@@ -60,7 +65,8 @@ export class TodosListComponent implements OnInit {
           this.completeTodos = todos;
           break;
         default:
-          this.todos = todos;
+          this.activeTodos = this.todoService.getActiveTodoList(todos);
+          this.completeTodos = this.todoService.getCompleteTodoList(todos);
       }
     });
   }

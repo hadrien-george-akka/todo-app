@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PagesComponent } from './pages.component';
 import { TodosListComponent } from './todos-list/todos-list.component';
 import { TodoDisplayComponent } from './todo-display/todo-display.component';
+import { TodoService } from './shared/todo.service';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,8 @@ import { TodoDisplayComponent } from './todo-display/todo-display.component';
     MatCheckboxModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    TodoService
+  ],
 })
 export class PagesModule { }
