@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 /**
- * Wrapper around the Procedure Module
+ * Pages component
  */
 @Component({
   templateUrl: './pages.component.html'

@@ -6,6 +6,9 @@ import { Store } from '@ngrx/store';
 import { Todo } from 'src/app/model/todo.interface';
 import * as TodoActions from './../../model/todo.actions';
 
+/**
+ * Display one todo for list todo
+ */
 @Component({
   selector: 'app-todo',
   templateUrl: './todo-display.component.html'
