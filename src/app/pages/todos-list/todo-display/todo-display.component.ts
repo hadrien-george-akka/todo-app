@@ -4,7 +4,7 @@ import { AppState } from 'src/app/app.reducer';
 import { Store } from '@ngrx/store';
 
 import { Todo } from 'src/app/model/todo.interface';
-import * as TodoActions from './../../model/todo.actions';
+import * as TodoActions from '../../../model/todo.actions';
 
 /**
  * Display one todo for list todo

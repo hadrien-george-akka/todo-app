@@ -3,9 +3,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { StoreModule, Store } from '@ngrx/store';
 
-import { rootReducer , AppState} from '../../app.reducer';
+import { rootReducer , AppState} from '../../../app.reducer';
 import { Todo } from 'src/app/model/todo.interface';
-import * as TodoActions from './../../model/todo.actions';
+import * as TodoActions from '../../../model/todo.actions';
 import { TodoDisplayComponent } from './todo-display.component';
 
 describe('TodoDisplayComponent', () => {

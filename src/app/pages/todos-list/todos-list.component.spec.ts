@@ -12,8 +12,8 @@ import { rootReducer , AppState} from '../../app.reducer';
 import { Todo } from 'src/app/model/todo.interface';
 import * as TodoActions from './../../model/todo.actions';
 import { TodosListComponent } from './todos-list.component';
-import { TodoDisplayComponent } from '../todo-display/todo-display.component';
-import { TodoService } from '../shared/todo.service';
+import { TodoDisplayComponent } from '../todos-list/todo-display/todo-display.component';
+import { TodoService } from '../../core/services/todo.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -29,7 +29,6 @@ describe('TodoDisplayComponent', () => {
   let fixture: ComponentFixture<TodosListComponent>;
   let store: Store<AppState>;
   let route: ActivatedRoute;
-
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

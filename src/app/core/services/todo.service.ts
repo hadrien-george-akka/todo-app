@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Todo, mockTodos } from 'src/app/model/todo.interface';
-import { TodosListComponent } from '../todos-list/todos-list.component';
 
 /**
  * Todo data service

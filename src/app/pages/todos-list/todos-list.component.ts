@@ -3,7 +3,7 @@ import { Todo, mockTodos } from '../../model/todo.interface';
 
 import { Store } from '@ngrx/store';
 import { AppState } from './../../app.reducer';
-import { TodoService } from '../shared/todo.service';
+import { TodoService } from '../../core/services/todo.service';
 import * as TodoActions from './../../model/todo.actions';
 import { getTodos } from 'src/app/model/todo.selectors';
 

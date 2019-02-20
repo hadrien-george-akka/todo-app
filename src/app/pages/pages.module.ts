@@ -6,14 +6,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { PagesComponent } from './pages.component';
 import { TodosListComponent } from './todos-list/todos-list.component';
-import { TodoDisplayComponent } from './todo-display/todo-display.component';
-import { TodoService } from './shared/todo.service';
+import { TodoDisplayComponent } from './todos-list/todo-display/todo-display.component';
+
 
 @NgModule({
   declarations: [
-    PagesComponent,
     TodosListComponent,
     TodoDisplayComponent
   ],
@@ -23,9 +21,6 @@ import { TodoService } from './shared/todo.service';
     MatCardModule,
     MatCheckboxModule,
     ReactiveFormsModule
-  ],
-  providers: [
-    TodoService
   ],
 })
 export class PagesModule { }
