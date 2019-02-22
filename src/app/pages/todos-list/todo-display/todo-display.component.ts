@@ -5,13 +5,15 @@ import { Store } from '@ngrx/store';
 
 import { Todo } from 'src/app/model/todo.interface';
 import * as TodoActions from '../../../model/todo.actions';
+import { Router } from '@angular/router';
 
 /**
  * Display one todo for list todo
  */
 @Component({
   selector: 'app-todo',
-  templateUrl: './todo-display.component.html'
+  templateUrl: './todo-display.component.html',
+  styleUrls: ['./todo-display.component.scss']
 })
 export class TodoDisplayComponent implements OnInit {
 
@@ -26,9 +28,11 @@ export class TodoDisplayComponent implements OnInit {
   /**
    * Component dependencies
    * @param store NgRx store
+   * @param router Angular router
    */
   constructor(
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private router: Router
   ) {
     // Initiate todo form group
     this.todoFormGroup = new FormGroup({
@@ -36,6 +40,9 @@ export class TodoDisplayComponent implements OnInit {
     });
   }
 
+  /**
+   * Angular OnInit lifecycle override
+   */
   ngOnInit() {
     // Initiate todo state value in checkbox
     this.todoFormGroup.get('stateTodoCtrl').setValue(this.todo.isComplete, {emitEvent: false});
@@ -47,6 +54,20 @@ export class TodoDisplayComponent implements OnInit {
     });
 
 
+  }
+
+  /**
+   * Navigates to the Todo detail component
+   */
+  showTodoDetail(): void {
+    this.router.navigateByUrl(`/detail/${this.todo.id}`);
+  }
+
+  /**
+   * Navigates to the Todo update component
+   */
+  showTodoUpdate(): void {
+    this.router.navigateByUrl(`/update/${this.todo.id}`);
   }
 
 }

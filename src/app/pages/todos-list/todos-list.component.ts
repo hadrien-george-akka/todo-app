@@ -11,7 +11,8 @@ import { getTodos } from 'src/app/model/todo.selectors';
  * Display the current Todos list
  */
 @Component({
-  templateUrl: './todos-list.component.html'
+  templateUrl: './todos-list.component.html',
+  styleUrls: ['./todos-list.component.scss']
 })
 export class TodosListComponent implements OnInit {
 
@@ -31,8 +32,10 @@ export class TodosListComponent implements OnInit {
     private store: Store<AppState>,
     private todoService: TodoService
   ) {
-    this.todos = this.todoService.getTodoList();
-    this.store.dispatch(new TodoActions.PopulateTodosAction(this.todos));
+    this.todos = this.todoService.todoList.length === 0 ?
+      this.todoService.getTodoList() : this.todoService.todoList;
+
+    // this.store.dispatch(new TodoActions.PopulateTodosAction(this.todos));
   }
 
   /**
@@ -46,7 +49,7 @@ export class TodosListComponent implements OnInit {
    * Populate the todos variables in function of todo state
    */
   private populateTodosByState() {
-    this.store.select(getTodos)
+    this.todoService.store.select(getTodos)
     .subscribe(todos => {
       this.activeTodos = this.todoService.getActiveTodoList(todos);
       this.completeTodos = this.todoService.getCompleteTodoList(todos);

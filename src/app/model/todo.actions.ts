@@ -20,6 +20,7 @@ export class UpdateAction implements Action {
   constructor(
     public id: number,
     public title: string,
+    public description: string,
   ) {}
 }
 

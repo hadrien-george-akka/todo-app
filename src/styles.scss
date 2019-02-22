@@ -53,6 +53,9 @@ body {
   background-color: $color-body;
 }
 
+p {
+  margin: 0 0 0 30px;
+}
 
 .no-margin {
   margin: 0;
@@ -60,6 +63,21 @@ body {
 
 .no-padding {
   padding: 0;
+}
+
+hr.line {
+  opacity: 0.3;
+}
+
+.previous-button {
+  transition: all .15s ease-in-out;
+  opacity: 0.6;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
 }
 
 // ----------------------------------- MATERIAL ----------------------------------- // 
@@ -79,6 +97,19 @@ body {
 }
 
 .mat-checkbox-checked.mat-accent .mat-checkbox-background {
-  background-color: #13a315;
+  background-color: $color-primar;
 }
 
+.mat-button {
+  padding: 0 !important;
+  min-width: 1% !important;
+  margin:auto;
+}
+
+.mat-checkbox-disabled .mat-checkbox-label {
+  color: black;
+}
+
+.mat-button .mat-button-focus-overlay {
+  background-color: transparent;
+}

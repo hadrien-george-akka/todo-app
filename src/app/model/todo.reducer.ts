@@ -26,7 +26,8 @@ export function TodosReducer(state: Todo[] = initialState, action: TodoActions.T
         if (action.id === todo.id) {
           return {
             ...todo,
-            title: action.title
+            title: action.title,
+            description: action.description
           };
         } else {
           return todo;

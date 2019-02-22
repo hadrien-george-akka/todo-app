@@ -1,3 +1,27 @@
+@import 'src/app/theme/sass/variables';
+
 .strike-text {
   text-decoration: line-through;
+}
+
+.detail-button {
+  transition: all .15s ease-in-out;
+
+  &:hover {
+    color: $color-primar !important;
+    transform: scale(1.15);
+  }
+}
+
+.edit-button {
+  @extend .detail-button;
+}
+
+.delete-button {
+  transition: all .15s ease-in-out;
+
+  &:hover {
+    color: red;
+    transform: scale(1.15);
+  }
 }

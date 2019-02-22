@@ -1,0 +1,46 @@
+@import 'src/app/theme/sass/variables';
+
+.error-message {
+  color: red;
+}
+
+.checkbox-update {
+  margin: 0 0 0 30px;
+}
+
+.input-update {
+  margin: 15px 0 0 30px;
+}
+
+.textarea-update {
+  @extend .checkbox-update;
+}
+
+.save-button {
+  border: solid $color-third 1px !important;
+  padding: 0 10px !important;
+  font-family: $font-body;
+  font-size: $font-size-body;
+  background-color: $color-primar;
+  color: white;
+  transition: all .15s ease-in-out;
+
+  &:hover {
+    background-color: $color-second;
+    transform: scale(1.1);
+  }
+}
+
+.material-icons {
+  font-size: $font-size-title3;
+  line-height: 1.6;
+  width: 40px;
+}
+
+.mat-card-header {
+  margin-left: -35px;
+}
+
+span, .header-text {
+  margin-left: 10px;
+}
