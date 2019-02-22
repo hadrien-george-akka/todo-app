@@ -10,12 +10,14 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { TodosListComponent } from './todos-list/todos-list.component';
 import { TodoDisplayComponent } from './todos-list/todo-display/todo-display.component';
+import { TodoDetailComponent } from './todo-detail/todo-detail.component';
 
 
 @NgModule({
   declarations: [
     TodosListComponent,
-    TodoDisplayComponent
+    TodoDisplayComponent,
+    TodoDetailComponent
   ],
   imports: [
     CommonModule,

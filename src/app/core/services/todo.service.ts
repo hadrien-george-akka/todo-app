@@ -11,6 +11,7 @@ export class TodoService {
   todoList: Todo[];
 
   constructor() {
+    this.getTodoList();
   }
 
   /**
@@ -35,6 +36,14 @@ export class TodoService {
    */
   getCompleteTodoList(todos: Todo[]): Todo[] {
     return todos.filter(todo => todo.isComplete === true);
+  }
+
+  /**
+   * Return a todo from is id value
+   * @param id Todo id value
+   */
+  getTodoById(id: number): Todo {
+    return this.todoList.find(todo => todo.id === id);
   }
 
 }

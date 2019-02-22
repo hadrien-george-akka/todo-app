@@ -11,7 +11,8 @@ import { getTodos } from 'src/app/model/todo.selectors';
  * Display the current Todos list
  */
 @Component({
-  templateUrl: './todos-list.component.html'
+  templateUrl: './todos-list.component.html',
+  styleUrls: ['./todos-list.component.scss']
 })
 export class TodosListComponent implements OnInit {
 

@@ -3,6 +3,7 @@
     TODO
   </mat-card-header>
   <mat-card-content>
+    <hr class="line">
     <div *ngFor="let todo of activeTodos" fxLayout="column">
       <app-todo [todo]="todo"></app-todo>
     </div>
@@ -13,6 +14,7 @@
     DONE
   </mat-card-header>
   <mat-card-content>
+    <hr class="line">
     <div *ngFor="let todo of completeTodos" fxLayout="column">
       <app-todo [todo]="todo"></app-todo>
     </div>
