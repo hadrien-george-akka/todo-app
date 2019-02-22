@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Todo, mockTodos } from 'src/app/model/todo.interface';
+import { Todo, mockTodos } from '../../model/todo.interface';
 
 /**
  * Todo data service
@@ -36,6 +36,5 @@ export class TodoService {
   getCompleteTodoList(todos: Todo[]): Todo[] {
     return todos.filter(todo => todo.isComplete === true);
   }
-
 
 }

@@ -1,9 +1,20 @@
 
 <form [formGroup]="todoFormGroup">
-  <mat-checkbox formControlName="stateTodoCtrl">
-    <div [ngClass]="{'strike-text': isTodosComplete}">
-      {{ todo.title }}
+  <div fxLayout="row">
+    <div fxFlex="90">
+      <mat-checkbox formControlName="stateTodoCtrl">
+        <div [ngClass]="{'strike-text': isTodosComplete}">
+          {{ todo.title }}
+        </div>
+      </mat-checkbox>
     </div>
-  </mat-checkbox>
-
+    <div fxFlex="10">
+      <button mat-button fxFlex="70" (click)="test()">
+        <i class="material-icons edit-button">
+          edit
+        </i>
+      </button>
+      <div class="mat-button-focus-overlay"></div>
+    </div>
+  </div>
 </form>

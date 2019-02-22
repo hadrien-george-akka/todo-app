@@ -11,7 +11,8 @@ import * as TodoActions from '../../../model/todo.actions';
  */
 @Component({
   selector: 'app-todo',
-  templateUrl: './todo-display.component.html'
+  templateUrl: './todo-display.component.html',
+  styleUrls: ['./todo-display.component.scss']
 })
 export class TodoDisplayComponent implements OnInit {
 
@@ -47,6 +48,10 @@ export class TodoDisplayComponent implements OnInit {
     });
 
 
+  }
+
+  test() {
+    console.log('time to navigate');
   }
 
 }
