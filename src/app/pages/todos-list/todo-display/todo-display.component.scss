@@ -4,11 +4,24 @@
   text-decoration: line-through;
 }
 
-.edit-button {
-  transition: all .2s ease-in-out;
+.detail-button {
+  transition: all .15s ease-in-out;
+
+  &:hover {
+    color: $color-primar !important;
+    transform: scale(1.15);
+  }
 }
 
-.edit-button:hover {
-  color: $color-primar !important;
-  transform: scale(1.15);
+.edit-button {
+  @extend .detail-button;
+}
+
+.delete-button {
+  transition: all .15s ease-in-out;
+
+  &:hover {
+    color: red;
+    transform: scale(1.15);
+  }
 }

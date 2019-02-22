@@ -32,7 +32,9 @@ export class TodosListComponent implements OnInit {
     private store: Store<AppState>,
     private todoService: TodoService
   ) {
-    this.todos = this.todoService.getTodoList();
+    this.todos = this.todoService.todoList.length === 0 ?
+      this.todoService.getTodoList() : this.todoService.todoList;
+
     this.store.dispatch(new TodoActions.PopulateTodosAction(this.todos));
   }
 

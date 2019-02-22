@@ -8,7 +8,7 @@ import { Todo, mockTodos } from '../../model/todo.interface';
 export class TodoService {
 
   /** List of todos */
-  todoList: Todo[];
+  todoList: Todo[] = [];
 
   constructor() {
     this.getTodoList();
@@ -44,6 +44,15 @@ export class TodoService {
    */
   getTodoById(id: number): Todo {
     return this.todoList.find(todo => todo.id === id);
+  }
+
+  /**
+   * Update a specific todo in todosList
+   * @param todo Todo to update
+   */
+  updateTodo(todoUpdate: Todo): void {
+    const index = this.todoList.findIndex(todo => todo.id === todoUpdate.id);
+    this.todoList[index] = todoUpdate;
   }
 
 }

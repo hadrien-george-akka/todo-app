@@ -28,6 +28,7 @@ export class TodoDisplayComponent implements OnInit {
   /**
    * Component dependencies
    * @param store NgRx store
+   * @param router Angular router
    */
   constructor(
     private store: Store<AppState>,
@@ -58,8 +59,15 @@ export class TodoDisplayComponent implements OnInit {
   /**
    * Navigates to the Todo detail component
    */
-  displayTodoDetail() {
+  showTodoDetail(): void {
     this.router.navigateByUrl(`/detail/${this.todo.id}`);
+  }
+
+  /**
+   * Navigates to the Todo update component
+   */
+  showTodoUpdate(): void {
+    this.router.navigateByUrl(`/update/${this.todo.id}`);
   }
 
 }
