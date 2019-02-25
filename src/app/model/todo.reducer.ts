@@ -37,6 +37,17 @@ export function TodosReducer(state: Todo[] = initialState, action: TodoActions.T
     case TodoActions.DELETE_TODO: {
       return state.filter(todo => action.id !== todo.id );
     }
+    case TodoActions.ADD_TODO: {
+      return [
+        ...state,
+        {
+          id: action.id,
+          title: action.title,
+          description: action.description,
+          isComplete: action.isComplete
+        }
+      ];
+    }
     default: {
       return state;
     }

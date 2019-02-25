@@ -51,6 +51,7 @@ export class TodosListComponent implements OnInit {
   private populateTodosByState() {
     this.todoService.store.select(getTodos)
     .subscribe(todos => {
+      console.log(this.todoService.maxId)
       this.activeTodos = this.todoService.getActiveTodoList(todos);
       this.completeTodos = this.todoService.getCompleteTodoList(todos);
     });

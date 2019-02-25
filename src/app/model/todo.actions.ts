@@ -2,10 +2,11 @@ import { Action } from '@ngrx/store';
 import { Todo } from './todo.interface';
 
 
-export const TOGGLE_TODO = '[TODO] toggle';
-export const UPDATE_TODO = '[TODO] update';
-export const POPULATE_TODOS  = '[TODO] populate';
+export const ADD_TODO    = '[TODO] add';
 export const DELETE_TODO = '[TODO] delete';
+export const UPDATE_TODO = '[TODO] update';
+export const TOGGLE_TODO = '[TODO] toggle';
+export const POPULATE_TODOS  = '[TODO] populate';
 
 export class ToggleAction implements Action {
   readonly type = TOGGLE_TODO;
@@ -41,5 +42,16 @@ export class DeleteTodoAction implements Action {
   ) {}
 }
 
+export class AddTodoAction implements Action {
+  readonly type = ADD_TODO;
+
+  constructor(
+    public id: number,
+    public title: string,
+    public description: string,
+    public isComplete: boolean
+  ) {}
+}
+
 export type TodoActionType =
-UpdateAction | PopulateTodosAction | ToggleAction | DeleteTodoAction;
+UpdateAction | PopulateTodosAction | ToggleAction | DeleteTodoAction | AddTodoAction;

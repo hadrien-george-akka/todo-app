@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { TodoService } from 'src/app/core/services/todo.service';
 import { Todo } from 'src/app/model/todo.interface';
-import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import * as TodoActions from './../../model/todo.actions';
-import { AppState } from '../../app.reducer';
-import { Store } from '@ngrx/store';
 import { getTodos } from 'src/app/model/todo.selectors';
 
 /**

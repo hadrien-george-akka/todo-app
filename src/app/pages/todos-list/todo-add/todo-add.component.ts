@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { TodoService } from 'src/app/core/services/todo.service';
 import { Todo } from 'src/app/model/todo.interface';
+import * as TodoActions from '../../../model/todo.actions';
 
 /**
  * Add Todo component
@@ -15,7 +16,15 @@ import { Todo } from 'src/app/model/todo.interface';
 export class TodoAddComponent {
 
   /** Todo object to add */
-  todoToAdd: Todo;
+  todo: Todo = {
+    id: null,
+    title: null,
+    description: null,
+    isComplete: false
+  };
+
+  /** Boolean is the expansion pannel expanded */
+  pannelExpanded = false;
 
   /** Todo form group */
   todoFormGroup: FormGroup;
@@ -30,8 +39,32 @@ export class TodoAddComponent {
     });
   }
 
-  test() {
-    console.log('test');
+  /**
+   * Add a new todo to the store
+   * Close the material expansion pannel and reset form values
+   */
+  addTodo() {
+    if (this.todoFormGroup.valid) {
+      this.todoService.maxId++;
+
+      this.todo.id = this.todoService.maxId;
+      this.todo.title = this.todoFormGroup.get('titleTodoCtrl').value;
+      this.todo.description = this.todoFormGroup.get('descriptionTodoCtrl').value;
+
+      const action = new TodoActions.AddTodoAction(this.todo.id, this.todo.title, this.todo.description, this.todo.isComplete);
+      this.todoService.store.dispatch(action);
+
+      this.togglePannel();
+      this.todoFormGroup.get('titleTodoCtrl').reset();
+      this.todoFormGroup.get('descriptionTodoCtrl').reset();
+    }
+  }
+
+  /**
+   * Toggle the material expansion pannel
+   */
+  togglePannel() {
+    this.pannelExpanded = !this.pannelExpanded;
   }
 
 }
