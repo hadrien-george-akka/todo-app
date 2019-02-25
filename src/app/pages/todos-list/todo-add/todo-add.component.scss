@@ -1,0 +1,37 @@
+@import 'src/app/theme/sass/variables';
+
+.add-header {
+  justify-content: center;
+}
+
+.material-icons {
+  font-size: $font-size-title3;
+  line-height: 1.6;
+  width: 40px;
+}
+
+.content-expansion-pannel {
+  margin-top: 20px;
+  font-size: $font-size-form;
+}
+
+.mat-expansion-panel {
+  margin: 20px !important;
+  border: solid 1px $color-third;
+}
+
+.mat-expansion-panel-header  {
+  background: $color-primar !important;
+
+  &:hover {
+    background: $color-second !important;
+  }
+}
+
+.mat-expansion-panel-header-title {
+  color: white;
+}
+
+form {
+  padding: 0 24px 16px;
+}

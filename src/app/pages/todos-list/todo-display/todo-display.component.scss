@@ -1,11 +1,39 @@
 @import 'src/app/theme/sass/variables';
 
+.mat-expansion-panel {
+  box-shadow: none;
+  padding: 0 !important;
+}
+
+.mat-expansion-panel-header {
+  padding: 0 10px 0 0 !important;
+}
+
+.mat-expansion-panel-content > .mat-expansion-panel-body {
+  padding: 0 0 10px 0 !important;
+}
+
+.checkbox {
+  margin-left: 12px;
+  max-width: 90%;
+}
+
 .strike-text {
   text-decoration: line-through;
 }
 
-.detail-button {
+
+@mixin icon-button {
+  width: 36px;
+  font-size: $font-size-title3;
   transition: all .15s ease-in-out;
+  color: $color-grey;
+  margin: 0 5px;
+
+}
+
+.edit-button {
+  @include icon-button;
 
   &:hover {
     color: $color-primar !important;
@@ -13,15 +41,26 @@
   }
 }
 
-.edit-button {
-  @extend .detail-button;
-}
-
 .delete-button {
-  transition: all .15s ease-in-out;
+  @include icon-button;
 
   &:hover {
     color: red;
     transform: scale(1.15);
   }
 }
+
+p, .title {
+  margin: 0;
+  font-size: $font-size-body;
+}
+
+p, .description {
+  white-space:pre-wrap;
+  font-size: $font-size-form;
+  font-family: $font-body;
+  margin: 10px 0 0 30px;
+  word-break: break-word;
+}
+
+

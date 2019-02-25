@@ -82,6 +82,7 @@ hr.line {
 
 // ----------------------------------- MATERIAL ----------------------------------- // 
 
+// ------ Material card ------
 .mat-card {
   box-shadow: 0 2px 1px -1px rgba(0,0,0,.4), 0 1px 1px 0 rgba(0,0,0,.32), 0 1px 3px 0 rgba(0,0,0,.28) !important;
   margin: 20px;
@@ -92,24 +93,28 @@ hr.line {
   font-family: $font-body;
 }
 
-.mat-card-content {
-  padding-left:20px;
-}
-
+// ------ Mat checkbox ------
 .mat-checkbox-checked.mat-accent .mat-checkbox-background {
   background-color: $color-primar;
-}
-
-.mat-button {
-  padding: 0 !important;
-  min-width: 1% !important;
-  margin:auto;
 }
 
 .mat-checkbox-disabled .mat-checkbox-label {
   color: black;
 }
 
+// ------ Mat button ------
+.mat-button {
+  padding: 0 !important;
+  min-width: 1% !important;
+  margin:auto;
+}
+
 .mat-button .mat-button-focus-overlay {
   background-color: transparent;
+}
+
+// ------ Mat expansion panel ------
+
+.mat-expansion-panel-content > .mat-expansion-panel-body {
+  padding: 0 0 10px 0 !important;
 }

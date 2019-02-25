@@ -14,10 +14,14 @@ export class TodoService {
   /** List of todos */
   todoList: Todo[] = [];
 
+  /** Max id value in todo list */
+  maxId: number;
+
   constructor(
     public store: Store<AppState>
   ) {
-    this.getTodoList();
+    this.todoList = this.getTodoList();
+    this.maxId = this.getMaxId(this.todoList);
     this.store.dispatch(new TodoActions.PopulateTodosAction(this.todoList));
   }
 
@@ -25,8 +29,7 @@ export class TodoService {
    * Return mocked todos from todo interface
    */
   getTodoList(): Todo[] {
-    this.todoList = mockTodos();
-    return this.todoList;
+    return mockTodos();
   }
 
   /**
@@ -52,6 +55,15 @@ export class TodoService {
    */
   getTodoById(todos: Todo[], id: number): Todo {
     return todos.find(todo => todo.id === id);
+  }
+
+  /**
+   * Return the maximum id value from list of todos
+   * @param todos List of todos
+   */
+  getMaxId(todos: Todo[]): number {
+    const maxIdTodo: Todo = todos.reduce((prev, current) => (prev.id > current.id) ? prev : current);
+    return  maxIdTodo.id;
   }
 
 }

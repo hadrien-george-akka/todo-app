@@ -1,27 +1,29 @@
-
 <form [formGroup]="todoFormGroup">
-  <div fxLayout="row">
-    <div fxFlex="85">
-      <mat-checkbox formControlName="stateTodoCtrl">
+  <mat-expansion-panel>
+
+    <mat-expansion-panel-header [collapsedHeight]="'42px'" [expandedHeight]="'42px'">
+      <mat-checkbox formControlName="stateTodoCtrl" class="checkbox"s>
         <div [ngClass]="{'strike-text': isTodosComplete}">
-          {{ todo.title }}
+          <p class="title">{{ todo.title }}</p>
         </div>
       </mat-checkbox>
+    </mat-expansion-panel-header>
+
+    <div fxLayout="row" fxLayoutAlign="none start">
+      <p class="description" fxFlex="85">{{ todo.description }}</p>
+      <div fxLayout="row" fxLayoutAlign="end">
+        <button mat-button (click)="showTodoUpdate()">
+          <i class="material-icons edit-button">
+            edit
+          </i>
+        </button>
+        <button mat-button (click)="deleteTodo()">
+          <i class="material-icons delete-button">
+            delete
+          </i>
+        </button>
+      </div>
     </div>
-    <button mat-button (click)="showTodoDetail()" fxFlex="5">
-      <i class="material-icons edit-button">
-        remove_red_eye
-      </i>
-    </button>
-    <button mat-button (click)="showTodoUpdate()" fxFlex="5">
-      <i class="material-icons detail-button">
-        edit
-      </i>
-    </button>
-    <button mat-button fxFlex="5">
-      <i class="material-icons delete-button">
-        delete
-      </i>
-    </button>
-  </div>
+
+  </mat-expansion-panel>
 </form>

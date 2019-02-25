@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { TodoService } from 'src/app/core/services/todo.service';
 import { Todo } from 'src/app/model/todo.interface';
-import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import * as TodoActions from './../../model/todo.actions';
-import { AppState } from '../../app.reducer';
-import { Store } from '@ngrx/store';
 import { getTodos } from 'src/app/model/todo.selectors';
 
 /**
@@ -44,7 +42,6 @@ export class TodoUpdateComponent implements OnInit {
   ) {
     // Initiate todo form group
     this.todoFormGroup = new FormGroup({
-      stateTodoCtrl: new FormControl(false),
       titleTodoCtrl: new FormControl('', Validators.required),
       descriptionTodoCtrl: new FormControl('')
     });
@@ -60,7 +57,6 @@ export class TodoUpdateComponent implements OnInit {
 
     // Initiate todo form controls
     if (this.isTodoExist) {
-      this.todoFormGroup.get('stateTodoCtrl').setValue(this.todo.isComplete, {emitEvent: false});
       this.todoFormGroup.get('titleTodoCtrl').setValue(this.todo.title);
       this.todoFormGroup.get('descriptionTodoCtrl').setValue(this.todo.description);
     }
