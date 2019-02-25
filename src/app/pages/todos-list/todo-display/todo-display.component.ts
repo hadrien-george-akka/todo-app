@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { Todo } from 'src/app/model/todo.interface';
 import * as TodoActions from '../../../model/todo.actions';
 import { Router } from '@angular/router';
+import { TodoService } from 'src/app/core/services/todo.service';
 
 /**
  * Display one todo for list todo
@@ -32,7 +33,8 @@ export class TodoDisplayComponent implements OnInit {
    */
   constructor(
     private store: Store<AppState>,
-    private router: Router
+    private router: Router,
+    private todoService: TodoService
   ) {
     // Initiate todo form group
     this.todoFormGroup = new FormGroup({
@@ -57,17 +59,26 @@ export class TodoDisplayComponent implements OnInit {
   }
 
   /**
-   * Navigates to the Todo detail component
+   * Navigates to the Todo detail component on view button click
    */
   showTodoDetail(): void {
     this.router.navigateByUrl(`/detail/${this.todo.id}`);
   }
 
   /**
-   * Navigates to the Todo update component
+   * Navigates to the Todo update component on edit button click
    */
   showTodoUpdate(): void {
     this.router.navigateByUrl(`/update/${this.todo.id}`);
+  }
+
+  /**
+   * Delete the todo on delete button click
+   */
+  deleteTodo() {
+    const id = this.todo.id;
+    const action = new TodoActions.DeleteTodoAction(id);
+    this.todoService.store.dispatch(action);
   }
 
 }

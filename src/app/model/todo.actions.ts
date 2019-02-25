@@ -5,6 +5,7 @@ import { Todo } from './todo.interface';
 export const TOGGLE_TODO = '[TODO] toggle';
 export const UPDATE_TODO = '[TODO] update';
 export const POPULATE_TODOS  = '[TODO] populate';
+export const DELETE_TODO = '[TODO] delete';
 
 export class ToggleAction implements Action {
   readonly type = TOGGLE_TODO;
@@ -32,5 +33,13 @@ export class PopulateTodosAction implements Action {
   ) {}
 }
 
+export class DeleteTodoAction implements Action {
+  readonly type = DELETE_TODO;
+
+  constructor(
+    public id: number
+  ) {}
+}
+
 export type TodoActionType =
-UpdateAction | PopulateTodosAction | ToggleAction;
+UpdateAction | PopulateTodosAction | ToggleAction | DeleteTodoAction;

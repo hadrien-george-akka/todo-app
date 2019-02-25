@@ -34,6 +34,9 @@ export function TodosReducer(state: Todo[] = initialState, action: TodoActions.T
         }
       });
     }
+    case TodoActions.DELETE_TODO: {
+      return state.filter(todo => action.id !== todo.id );
+    }
     default: {
       return state;
     }
