@@ -34,8 +34,6 @@
       </form>
     </mat-card-content>
     <div fxLayout="row" fxLayoutAlign="end">
-      <button mat-button class="save-button" (click)="updateTodo()">
-        Save
-      </button>
+      <app-my-button [text]="'Save'" (click)="updateTodo()"></app-my-button>
     </div>
   </mat-card>

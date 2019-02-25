@@ -44,7 +44,6 @@ export class TodoUpdateComponent implements OnInit {
   ) {
     // Initiate todo form group
     this.todoFormGroup = new FormGroup({
-      stateTodoCtrl: new FormControl(false),
       titleTodoCtrl: new FormControl('', Validators.required),
       descriptionTodoCtrl: new FormControl('')
     });
@@ -60,7 +59,6 @@ export class TodoUpdateComponent implements OnInit {
 
     // Initiate todo form controls
     if (this.isTodoExist) {
-      this.todoFormGroup.get('stateTodoCtrl').setValue(this.todo.isComplete, {emitEvent: false});
       this.todoFormGroup.get('titleTodoCtrl').setValue(this.todo.title);
       this.todoFormGroup.get('descriptionTodoCtrl').setValue(this.todo.description);
     }

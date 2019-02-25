@@ -15,6 +15,7 @@ import { TodoDisplayComponent } from './todos-list/todo-display/todo-display.com
 import { TodoDetailComponent } from './todo-detail/todo-detail.component';
 import { TodoUpdateComponent } from './todo-update/todo-update.component';
 import { TodoAddComponent } from './todos-list/todo-add/todo-add.component';
+import { ThemeModule } from '../theme/theme.module';
 
 
 @NgModule({
@@ -23,12 +24,13 @@ import { TodoAddComponent } from './todos-list/todo-add/todo-add.component';
     TodoDisplayComponent,
     TodoDetailComponent,
     TodoUpdateComponent,
-    TodoAddComponent
+    TodoAddComponent,
   ],
   imports: [
     CommonModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
+    ThemeModule,
     MatCardModule,
     MatCheckboxModule,
     ReactiveFormsModule,

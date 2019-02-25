@@ -100,13 +100,10 @@ hr.line {
 // ------ Material expansion pannel ------
 .mat-expansion-panel  {
   margin: 20px !important;
-  border: solid 1px $color-second;
-
+  border: solid 1px $color-third;
 }
 
 .mat-expansion-panel-header  {
-  font-size: $font-size-body;
-  font-family: $font-body;
   background: $color-primar !important;
   // opacity:0.5;
 
