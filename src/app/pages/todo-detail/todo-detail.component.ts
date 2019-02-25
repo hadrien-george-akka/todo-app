@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { TodoService } from 'src/app/core/services/todo.service';
 import { Todo } from 'src/app/model/todo.interface';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { getTodos } from 'src/app/model/todo.selectors';
 
 /**
  * Todo detail component
@@ -26,11 +27,13 @@ export class TodoDetailComponent implements OnInit {
   /**
    * Component dependencies
    * @param todoService Todo service
-   * @param route Angular current active route
+   * @param router Angular router
+   * @param activatedRoute Angular current active route
    */
   constructor(
     private todoService: TodoService,
-    private route: ActivatedRoute
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
   ) { }
 
   /**
@@ -45,7 +48,14 @@ export class TodoDetailComponent implements OnInit {
   }
 
   getTodo(): Todo {
-    const id = +this.route.snapshot.paramMap.get('id');
-    return this.todoService.getTodoById(id);
+    const id = +this.activatedRoute.snapshot.paramMap.get('id');
+    let todoToUpdate: Todo;
+
+    this.todoService.store.select(getTodos).subscribe(todos => {
+      todoToUpdate = this.todoService.getTodoById(todos, id);
+    });
+
+    return todoToUpdate;
   }
+
 }

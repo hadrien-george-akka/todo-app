@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
+
 import { Todo, mockTodos } from '../../model/todo.interface';
+import { AppState } from 'src/app/app.reducer';
+import { Store } from '@ngrx/store';
+import * as TodoActions from './../../model/todo.actions';
 
 /**
  * Todo data service
@@ -10,8 +14,11 @@ export class TodoService {
   /** List of todos */
   todoList: Todo[] = [];
 
-  constructor() {
+  constructor(
+    public store: Store<AppState>
+  ) {
     this.getTodoList();
+    this.store.dispatch(new TodoActions.PopulateTodosAction(this.todoList));
   }
 
   /**
@@ -39,20 +46,12 @@ export class TodoService {
   }
 
   /**
-   * Return a todo from is id value
+   * Return a todo from a list of todos and is id value
+   * @param todos List of todos
    * @param id Todo id value
    */
-  getTodoById(id: number): Todo {
-    return this.todoList.find(todo => todo.id === id);
-  }
-
-  /**
-   * Update a specific todo in todosList
-   * @param todo Todo to update
-   */
-  updateTodo(todoUpdate: Todo): void {
-    const index = this.todoList.findIndex(todo => todo.id === todoUpdate.id);
-    this.todoList[index] = todoUpdate;
+  getTodoById(todos: Todo[], id: number): Todo {
+    return todos.find(todo => todo.id === id);
   }
 
 }

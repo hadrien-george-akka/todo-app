@@ -7,6 +7,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import * as TodoActions from './../../model/todo.actions';
 import { AppState } from '../../app.reducer';
 import { Store } from '@ngrx/store';
+import { getTodos } from 'src/app/model/todo.selectors';
 
 /**
  * Todo update component
@@ -35,13 +36,11 @@ export class TodoUpdateComponent implements OnInit {
    * @param todoService Todo service
    * @param router Angular router
    * @param activatedRoute Angular current active route
-   * @param store NgRx store
    */
   constructor(
     private todoService: TodoService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private store: Store<AppState>,
   ) {
     // Initiate todo form group
     this.todoFormGroup = new FormGroup({
@@ -58,20 +57,34 @@ export class TodoUpdateComponent implements OnInit {
     // Get todo values
     this.todo = this.getTodo();
     this.isTodoExist = this.todo ? true : false;
-    console.log(this.isTodoExist);
 
     // Initiate todo form controls
-    this.todoFormGroup.get('stateTodoCtrl').setValue(this.todo.isComplete, {emitEvent: false});
-    this.todoFormGroup.get('titleTodoCtrl').setValue(this.todo.title);
-    this.todoFormGroup.get('descriptionTodoCtrl').setValue(this.todo.description);
+    if (this.isTodoExist) {
+      this.todoFormGroup.get('stateTodoCtrl').setValue(this.todo.isComplete, {emitEvent: false});
+      this.todoFormGroup.get('titleTodoCtrl').setValue(this.todo.title);
+      this.todoFormGroup.get('descriptionTodoCtrl').setValue(this.todo.description);
+    }
 
   }
 
+  /**
+   * Get todo to update from route param id
+   */
   getTodo(): Todo {
     const id = +this.activatedRoute.snapshot.paramMap.get('id');
-    return this.todoService.getTodoById(id);
+    let todoToUpdate: Todo;
+
+    this.todoService.store.select(getTodos).subscribe(todos => {
+      todoToUpdate = this.todoService.getTodoById(todos, id);
+    });
+
+    return todoToUpdate;
   }
 
+  /**
+   * Update todo with form values on save click
+   * Redirect to todos list
+   */
   updateTodo() {
     const todoUpdated: Todo = {
       id: this.todo.id,
@@ -80,7 +93,9 @@ export class TodoUpdateComponent implements OnInit {
       isComplete: this.todo.isComplete
     };
 
-    this.todoService.updateTodo(todoUpdated);
+    const action = new TodoActions.UpdateAction(todoUpdated.id, todoUpdated.title, todoUpdated.description);
+    this.todoService.store.dispatch(action);
+
     this.router.navigateByUrl('/list');
   }
 }

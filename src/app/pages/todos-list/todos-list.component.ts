@@ -35,7 +35,7 @@ export class TodosListComponent implements OnInit {
     this.todos = this.todoService.todoList.length === 0 ?
       this.todoService.getTodoList() : this.todoService.todoList;
 
-    this.store.dispatch(new TodoActions.PopulateTodosAction(this.todos));
+    // this.store.dispatch(new TodoActions.PopulateTodosAction(this.todos));
   }
 
   /**
@@ -49,7 +49,7 @@ export class TodosListComponent implements OnInit {
    * Populate the todos variables in function of todo state
    */
   private populateTodosByState() {
-    this.store.select(getTodos)
+    this.todoService.store.select(getTodos)
     .subscribe(todos => {
       this.activeTodos = this.todoService.getActiveTodoList(todos);
       this.completeTodos = this.todoService.getCompleteTodoList(todos);
