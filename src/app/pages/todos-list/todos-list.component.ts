@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Todo, mockTodos } from '../../model/todo.interface';
+import { Todo } from '../../model/todo.interface';
 
-import { Store } from '@ngrx/store';
-import { AppState } from './../../app.reducer';
 import { TodoService } from '../../core/services/todo.service';
-import * as TodoActions from './../../model/todo.actions';
 import { getTodos } from 'src/app/model/todo.selectors';
 
 /**
@@ -25,11 +22,9 @@ export class TodosListComponent implements OnInit {
 
   /**
    * Component dependencies
-   * @param store NgRx store
    * @param todoService Todo service
    */
   constructor(
-    private store: Store<AppState>,
     private todoService: TodoService
   ) {
     this.todos = this.todoService.todoList.length === 0 ?
@@ -51,7 +46,6 @@ export class TodosListComponent implements OnInit {
   private populateTodosByState() {
     this.todoService.store.select(getTodos)
     .subscribe(todos => {
-      console.log(this.todoService.maxId)
       this.activeTodos = this.todoService.getActiveTodoList(todos);
       this.completeTodos = this.todoService.getCompleteTodoList(todos);
     });

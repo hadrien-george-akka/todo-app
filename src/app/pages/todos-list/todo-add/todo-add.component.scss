@@ -14,3 +14,24 @@
   margin-top: 20px;
   font-size: $font-size-form;
 }
+
+.mat-expansion-panel {
+  margin: 20px !important;
+  border: solid 1px $color-third;
+}
+
+.mat-expansion-panel-header  {
+  background: $color-primar !important;
+
+  &:hover {
+    background: $color-second !important;
+  }
+}
+
+.mat-expansion-panel-header-title {
+  color: white;
+}
+
+form {
+  padding: 0 24px 16px;
+}

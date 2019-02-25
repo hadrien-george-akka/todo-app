@@ -12,7 +12,6 @@ import { MatInputModule, MatExpansionModule } from '@angular/material';
 
 import { TodosListComponent } from './todos-list/todos-list.component';
 import { TodoDisplayComponent } from './todos-list/todo-display/todo-display.component';
-import { TodoDetailComponent } from './todo-detail/todo-detail.component';
 import { TodoUpdateComponent } from './todo-update/todo-update.component';
 import { TodoAddComponent } from './todos-list/todo-add/todo-add.component';
 import { ThemeModule } from '../theme/theme.module';
@@ -22,7 +21,6 @@ import { ThemeModule } from '../theme/theme.module';
   declarations: [
     TodosListComponent,
     TodoDisplayComponent,
-    TodoDetailComponent,
     TodoUpdateComponent,
     TodoAddComponent,
   ],
