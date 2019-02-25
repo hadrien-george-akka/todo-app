@@ -69,6 +69,17 @@ hr.line {
   opacity: 0.3;
 }
 
+.previous-button {
+  transition: all .15s ease-in-out;
+  opacity: 0.6;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
 // ----------------------------------- MATERIAL ----------------------------------- // 
 
 .mat-card {

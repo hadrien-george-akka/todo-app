@@ -43,10 +43,12 @@ export class TodoDetailComponent implements OnInit {
 
     this.todo = this.getTodo();
     this.isTodoExist = this.todo ? true : false;
-    console.log(this.isTodoExist);
 
   }
 
+  /**
+   * Get todo to display from route param id
+   */
   getTodo(): Todo {
     const id = +this.activatedRoute.snapshot.paramMap.get('id');
     let todoToUpdate: Todo;
@@ -56,6 +58,13 @@ export class TodoDetailComponent implements OnInit {
     });
 
     return todoToUpdate;
+  }
+
+  /**
+   * Navigate to the todo list
+   */
+  navigateToList() {
+    this.router.navigateByUrl('/list');
   }
 
 }

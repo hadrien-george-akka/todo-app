@@ -96,6 +96,13 @@ export class TodoUpdateComponent implements OnInit {
     const action = new TodoActions.UpdateAction(todoUpdated.id, todoUpdated.title, todoUpdated.description);
     this.todoService.store.dispatch(action);
 
+    this.navigateToList();
+  }
+
+  /**
+   * Navigate to the todo list
+   */
+  navigateToList() {
     this.router.navigateByUrl('/list');
   }
 }
