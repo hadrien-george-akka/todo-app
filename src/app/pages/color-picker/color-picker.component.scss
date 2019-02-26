@@ -1,0 +1,63 @@
+@import 'src/app/theme/sass/variables';
+@import "src/app/theme/sass/my-theme";
+
+.color-picker {
+  margin-left: 20px;
+}
+
+.color-picker-icon {
+  width: 36px;
+}
+
+.theme-buttons {
+  margin: 0 10px;
+}
+
+@mixin color-button {
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  border: solid 4px;
+  background-color: transparent;
+  transition: all .15s ease-in-out;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.button {
+  &-green {
+    @include color-button;
+    border-color: mat-color($todo-app-green, 500);
+  }
+
+  &-blue {
+    @include color-button;
+    border-color: mat-color($todo-app-blue, 500);
+  }
+
+  &-orange {
+    @include color-button;
+    border-color: mat-color($todo-app-orange, 500);
+  }
+
+  &-purple {
+    @include color-button;
+    border-color: mat-color($todo-app-purple, 500);
+  }
+
+  &-red {
+    @include color-button;
+    border-color: mat-color($todo-app-red, 500);
+  }
+
+  &-cyan {
+    @include color-button;
+    border-color: mat-color($todo-app-cyan, 500);
+  }
+}
+
+// .mat-menu-content {
+//   font-size: $font-size-form;
+// }

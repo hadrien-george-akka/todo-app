@@ -15,6 +15,7 @@ import { TodoDisplayComponent } from './todos-list/todo-display/todo-display.com
 import { TodoUpdateComponent } from './todo-update/todo-update.component';
 import { TodoAddComponent } from './todos-list/todo-add/todo-add.component';
 import { ThemeModule } from '../theme/theme.module';
+// import { ColorPickerComponent } from './color-picker/color-picker.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { ThemeModule } from '../theme/theme.module';
     TodoDisplayComponent,
     TodoUpdateComponent,
     TodoAddComponent,
+    // ColorPickerComponent,
   ],
   imports: [
     CommonModule,
