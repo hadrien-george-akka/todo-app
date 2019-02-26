@@ -36,7 +36,6 @@
   @include icon-button;
 
   &:hover {
-    color: $color-primar !important;
     transform: scale(1.15);
   }
 }
@@ -45,7 +44,7 @@
   @include icon-button;
 
   &:hover {
-    color: red;
+    // color: red;
     transform: scale(1.15);
   }
 }
