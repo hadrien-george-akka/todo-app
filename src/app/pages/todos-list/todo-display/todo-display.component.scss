@@ -1,7 +1,7 @@
 @import 'src/app/theme/sass/variables';
 
 .mat-expansion-panel {
-  box-shadow: none;
+  box-shadow: none !important;
   padding: 0 !important;
 }
 
@@ -36,7 +36,6 @@
   @include icon-button;
 
   &:hover {
-    color: $color-primar !important;
     transform: scale(1.15);
   }
 }
@@ -45,7 +44,6 @@
   @include icon-button;
 
   &:hover {
-    color: red;
     transform: scale(1.15);
   }
 }

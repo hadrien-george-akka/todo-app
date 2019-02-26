@@ -8,12 +8,17 @@ import { ThemeModule } from './theme/theme.module';
 import { AppRoutingModule } from './app-routing.module';
 import { StoreModule } from '@ngrx/store';
 import { rootReducer } from './app.reducer';
+import { MatMenuModule, MatButtonModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { TodoService } from './core/services/todo.service';
+import { ColorPickerService } from './core/services/color-picker.service';
+import { ColorPickerComponent } from './pages/color-picker/color-picker.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ColorPickerComponent
   ],
   imports: [
     BrowserModule,
@@ -21,10 +26,14 @@ import { TodoService } from './core/services/todo.service';
     PagesModule,
     ThemeModule,
     AppRoutingModule,
+    MatMenuModule,
+    FlexLayoutModule,
+    MatButtonModule,
     StoreModule.forRoot(rootReducer)
   ],
   providers: [
-    TodoService
+    TodoService,
+    ColorPickerService
   ],
   bootstrap: [AppComponent]
 })

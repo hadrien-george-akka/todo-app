@@ -1,24 +1,59 @@
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import 'app/theme/sass/variables';
+@import "src/app/theme/sass/my-theme";
 
 /* You can add global styles to this file, and also import other style files */
+
+.todo-app-theme-green {
+  $theme: $todo-app-theme-green;
+  @include angular-material-theme($theme);
+  @include my-theme-mixin($theme)
+}
+
+.todo-app-theme-blue {
+  $theme: $todo-app-theme-blue;
+  @include angular-material-theme($theme);
+  @include my-theme-mixin($theme)
+}
+
+.todo-app-theme-orange {
+  $theme: $todo-app-theme-orange;
+  @include angular-material-theme($theme);
+  @include my-theme-mixin($theme)
+}
+
+.todo-app-theme-purple {
+  $theme: $todo-app-theme-purple;
+  @include angular-material-theme($theme);
+  @include my-theme-mixin($theme)
+}
+
+.todo-app-theme-red {
+  $theme: $todo-app-theme-red;
+  @include angular-material-theme($theme);
+  @include my-theme-mixin($theme)
+}
+
+.todo-app-theme-cyan {
+  $theme: $todo-app-theme-cyan;
+  @include angular-material-theme($theme);
+  @include my-theme-mixin($theme)
+}
+
+html, body {
+  height:100%;
+}
 
 body {
   margin: 0;
   font-family: $font-body;
   font-size: $font-size-body;
-  background-color: $color-body;
-  // font-weight: 300;
+  // background-color: mat-color($todo-app-green, 50);
 }
 
-#header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 35px;
-  background-color:$color-body;
+app-root {
+  min-height: 100%
 }
+
 
 %font-title {
   font-family: $font-title;
@@ -49,8 +84,7 @@ body {
   display: block;
   max-width: 750px;
   margin: auto;
-  margin-top: 35px;
-  background-color: $color-body;
+  margin-top: 5px;
 }
 
 p {
@@ -94,10 +128,6 @@ hr.line {
 }
 
 // ------ Mat checkbox ------
-.mat-checkbox-checked.mat-accent .mat-checkbox-background {
-  background-color: $color-primar;
-}
-
 .mat-checkbox-disabled .mat-checkbox-label {
   color: black;
 }

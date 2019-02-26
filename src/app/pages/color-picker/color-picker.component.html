@@ -1,0 +1,21 @@
+  <div class="color-picker"  fxLayout="row" fxLayoutAlign="start">
+    <button mat-button [matMenuTriggerFor]="menu">
+      <i class="material-icons color-picker-icon" color="primary">
+        color_lens
+      </i>
+    </button>
+  </div>
+  <mat-menu #menu="matMenu">
+    <div fxLayout="column" fxLayoutGap="10px">
+      <div class="theme-buttons" fxLayout="row" fxLayoutGap="10px">
+        <button mat-button class="button-green" (click)="setThemeColor('green')"></button>
+        <button mat-button class="button-blue" (click)="setThemeColor('blue')"></button>
+        <button mat-button class="button-orange" (click)="setThemeColor('orange')"></button>
+      </div>
+      <div class="theme-buttons" fxLayout="row" fxLayoutGap="10px">
+        <button mat-button class="button-purple" (click)="setThemeColor('purple')"></button>
+        <button mat-button class="button-red" (click)="setThemeColor('red')"></button>
+        <button mat-button class="button-cyan" (click)="setThemeColor('cyan')"></button>
+      </div>
+    </div>
+  </mat-menu>

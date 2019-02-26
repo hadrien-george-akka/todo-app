@@ -1,12 +1,15 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div id="header"></div>
-<div style="text-align:center" class="content" fxLayout="column">
-  <p class="no-margin title-big">TODO List</p>
-  <p class="no-margin title-medium">What needs to be done</p>
+<div [class]="themeClass | async" id="all-app" >
+  <div class="all-app-background">
+
+    <div style="text-align:center" class="content" fxLayout="column">
+      <app-color-picker></app-color-picker>
+      <p class="no-margin title-big">TODO List</p>
+      <p class="no-margin title-medium">What needs to be done</p>
+    </div>
+    
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+      
+  </div>
 </div>
-
-<div class="content">
-  <router-outlet></router-outlet>
-</div>
-
-

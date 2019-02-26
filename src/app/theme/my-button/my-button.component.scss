@@ -1,16 +1,12 @@
 @import 'src/app/theme/sass/variables';
 
 .my-button {
-  border: solid $color-third 1px !important;
   padding: 0 10px !important;
   font-family: $font-body;
   font-size: $font-size-body;
-  background-color: $color-primar;
-  color: white;
   transition: all .15s ease-in-out;
 
   &:hover {
-    background-color: $color-second;
     transform: scale(1.1);
   }
 }
