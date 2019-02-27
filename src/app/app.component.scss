@@ -1,6 +1,19 @@
 
-.all-app {
-  width: 100vw;
-  height: 100vh;
-  margin-top: -5px;
+#all-app {
+  width: 100%;
+  min-height:100%;
+  overflow: none;
+  display: flex;
+}
+
+.all-app-background {
+  width: 100%;
+  height: 100%;
+  margin:0;
+  position: absolute;
+  top:0;
+  left:0;
+  bottom:0;
+  overflow: auto;
+
 }

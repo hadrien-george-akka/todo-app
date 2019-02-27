@@ -39,10 +39,19 @@
   @include my-theme-mixin($theme)
 }
 
+html, body {
+  height:100%;
+}
+
 body {
   margin: 0;
   font-family: $font-body;
   font-size: $font-size-body;
+  // background-color: mat-color($todo-app-green, 50);
+}
+
+app-root {
+  min-height: 100%
 }
 
 

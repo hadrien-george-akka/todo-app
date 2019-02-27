@@ -200,6 +200,8 @@ $md-cyan: (
     )
 );
 
+
+
 // // Defines different palettes
 $todo-app-warn:          mat-palette($mat-red); // Default warn value
 
@@ -221,12 +223,23 @@ $todo-app-red-accent:    mat-palette($md-red, 500, 700, 900);
 $todo-app-cyan:          mat-palette($md-cyan);
 $todo-app-cyan-accent:   mat-palette($md-cyan, 500, 700, 900);
 
+// @function create-wonky-theme($primary, $accent, $warn) {
+//   @return (
+//     primary: $primary,
+//     accent: $accent,
+//     warn: $warn,
+//     is-dark: false,
+//     background: mat-color($primary, 50),
+//   );
+// }
+
 // // Defines different themes
 $todo-app-theme-green: mat-light-theme(
   $todo-app-green,
   $todo-app-green-accent,
-  $todo-app-warn
+  $todo-app-warn,
 );
+
 
 $todo-app-theme-blue: mat-light-theme(
   $todo-app-blue,
@@ -269,7 +282,7 @@ $todo-app-theme-cyan: mat-light-theme(
     $key: warn
   );
 
-  .all-app {
+  .all-app-background {
     background-color: mat-color($primary, 50);
   }
 
