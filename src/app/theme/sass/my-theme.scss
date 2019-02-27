@@ -223,16 +223,6 @@ $todo-app-red-accent:    mat-palette($md-red, 500, 700, 900);
 $todo-app-cyan:          mat-palette($md-cyan);
 $todo-app-cyan-accent:   mat-palette($md-cyan, 500, 700, 900);
 
-// @function create-wonky-theme($primary, $accent, $warn) {
-//   @return (
-//     primary: $primary,
-//     accent: $accent,
-//     warn: $warn,
-//     is-dark: false,
-//     background: mat-color($primary, 50),
-//   );
-// }
-
 // // Defines different themes
 $todo-app-theme-green: mat-light-theme(
   $todo-app-green,
@@ -292,7 +282,6 @@ $todo-app-theme-cyan: mat-light-theme(
     border: solid mat-color($primary, 900) 1px ;
 
     &:hover {
-      // transform: scale(1.1);
       background-color: mat-color($primary, 700);
     }
   }
@@ -308,6 +297,10 @@ $todo-app-theme-cyan: mat-light-theme(
     &:hover {
       background: mat-color($primary, 700) !important;
     }
+  }
+
+  .add-expansion-panel-title {
+    color: mat-contrast($primary, 500);
   }
 
   .edit-button { 

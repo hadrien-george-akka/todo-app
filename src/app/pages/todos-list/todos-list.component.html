@@ -17,7 +17,7 @@
   <mat-card-content>
     <hr class="line">
     <div *ngFor="let todo of completeTodos" fxLayout="column">
-      <app-todo [todo]="todo"></app-todo>
+      <app-todo [todo]="todo" [isTodosComplete]="true"></app-todo>
     </div>
   </mat-card-content>
 </mat-card>

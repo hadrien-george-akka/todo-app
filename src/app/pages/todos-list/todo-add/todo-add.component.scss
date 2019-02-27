@@ -1,7 +1,7 @@
 @import 'src/app/theme/sass/variables';
 @import 'src/app/theme/sass/my-theme.scss';
 
-.add-header {
+.add-expansion-panel-title {
   justify-content: center;
 }
 
@@ -16,10 +16,10 @@
   font-size: $font-size-form;
 }
 
-.mat-expansion-panel-header-title, .title {
-  color: white;
-}
-
 form {
   padding: 0 24px 16px;
 }
+
+// .mat-expansion-panel-header-title, .title {
+//   color: white;
+// }
