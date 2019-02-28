@@ -7,40 +7,43 @@ import { StoreModule, Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatCardModule } from '@angular/material/card';
+import { MatExpansionModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 
 import { rootReducer , AppState} from '../../app.reducer';
 import { Todo } from 'src/app/model/todo.interface';
 import * as TodoActions from './../../model/todo.actions';
 import { TodosListComponent } from './todos-list.component';
-import { TodoDisplayComponent } from '../todos-list/todo-display/todo-display.component';
+import { TodoDisplayComponent } from './todo-display/todo-display.component';
+import { TodoAddComponent } from './todo-add/todo-add.component';
+import { MyButtonComponent } from '../../theme/my-button/my-button.component';
 import { TodoService } from '../../core/services/todo.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-@Component({
-  // tslint:disable-next-line:component-selector
-  selector: 'blank-cmp',
-  template: ``
-})
-// tslint:disable-next-line:component-class-suffix
-export class TestComponent {
-}
 
-describe('TodoDisplayComponent', () => {
+describe('TodoListComponent', () => {
   let component: TodosListComponent;
   let fixture: ComponentFixture<TodosListComponent>;
   let store: Store<AppState>;
   let route: ActivatedRoute;
+  let todoService: TodoService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         TodosListComponent,
         TodoDisplayComponent,
+        TodoAddComponent,
+        MyButtonComponent,
         TestComponent
       ],
       imports: [
+        BrowserAnimationsModule,
         MatCardModule,
         ReactiveFormsModule,
         MatCheckboxModule,
+        MatExpansionModule,
+        MatFormFieldModule,
+        MatInputModule,
         RouterTestingModule.withRoutes([
           {path: '', component: TestComponent}
         ]),
@@ -54,13 +57,15 @@ describe('TodoDisplayComponent', () => {
 
   beforeEach(() => {
     store = TestBed.get(Store);
-    spyOn(store, 'dispatch').and.callThrough();
+    todoService = new TodoService(store);
+    spyOn(todoService.store, 'dispatch').and.callThrough();
 
     route = TestBed.get(ActivatedRoute);
 
     fixture = TestBed.createComponent(TodosListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
   });
 
   it('should create component', () => {
@@ -69,11 +74,20 @@ describe('TodoDisplayComponent', () => {
 
   it('should populate the activeTodos and completeTodos', () => {
     const action = new TodoActions.PopulateTodosAction(testTodos);
-    store.dispatch(action);
+    todoService.store.dispatch(action);
     expect(component.activeTodos).toEqual(testActiveTodos);
     expect(component.completeTodos).toEqual(testCompleteTodos);
   });
 });
+
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'blank-cmp',
+  template: ``
+})
+// tslint:disable-next-line:component-class-suffix
+export class TestComponent {
+}
 
 export const testTodos: Todo[] = [
   {

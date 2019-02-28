@@ -24,7 +24,6 @@ export class ColorPickerService {
     private overlayContainer: OverlayContainer
   ) {
     const storageClass = localStorage.getItem('color-picker');
-    console.log(storageClass);
 
     if (storageClass) {
       overlayContainer.getContainerElement().classList.add(storageClass);

@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatMenuModule } from '@angular/material';
 
 import { ColorPickerComponent } from './color-picker.component';
+import { ColorPickerService } from 'src/app/core/services/color-picker.service';
 
 describe('ColorPickerComponent', () => {
   let component: ColorPickerComponent;
@@ -8,7 +10,13 @@ describe('ColorPickerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ColorPickerComponent ]
+      declarations: [ ColorPickerComponent ],
+      imports: [
+        MatMenuModule
+      ],
+      providers: [
+        ColorPickerService
+      ]
     })
     .compileComponents();
   }));

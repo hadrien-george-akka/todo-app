@@ -82,17 +82,20 @@ export class TodoUpdateComponent implements OnInit {
    * Redirect to todos list
    */
   updateTodo() {
-    const todoUpdated: Todo = {
-      id: this.todo.id,
-      title: this.todoFormGroup.get('titleTodoCtrl').value,
-      description: this.todoFormGroup.get('descriptionTodoCtrl').value,
-      isComplete: this.todo.isComplete
-    };
+    if (this.todoFormGroup.valid) {
 
-    const action = new TodoActions.UpdateAction(todoUpdated.id, todoUpdated.title, todoUpdated.description);
-    this.todoService.store.dispatch(action);
+      const todoUpdated: Todo = {
+        id: this.todo.id,
+        title: this.todoFormGroup.get('titleTodoCtrl').value,
+        description: this.todoFormGroup.get('descriptionTodoCtrl').value,
+        isComplete: this.todo.isComplete
+      };
 
-    this.navigateToList();
+      const action = new TodoActions.UpdateAction(todoUpdated.id, todoUpdated.title, todoUpdated.description);
+      this.todoService.store.dispatch(action);
+
+      this.navigateToList();
+    }
   }
 
   /**
