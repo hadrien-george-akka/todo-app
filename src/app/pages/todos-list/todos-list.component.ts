@@ -3,6 +3,7 @@ import { Todo } from '../../model/todo.interface';
 
 import { TodoService } from '../../core/services/todo.service';
 import { getTodos } from 'src/app/model/todo.selectors';
+import * as TodoActions from '../../model/todo.actions';
 
 /**
  * Display the current Todos list
@@ -29,8 +30,6 @@ export class TodosListComponent implements OnInit {
   ) {
     this.todos = this.todoService.todoList.length === 0 ?
       this.todoService.getTodoList() : this.todoService.todoList;
-
-    // this.store.dispatch(new TodoActions.PopulateTodosAction(this.todos));
   }
 
   /**

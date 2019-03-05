@@ -7,6 +7,7 @@ export const DELETE_TODO = '[TODO] delete';
 export const UPDATE_TODO = '[TODO] update';
 export const TOGGLE_TODO = '[TODO] toggle';
 export const POPULATE_TODOS  = '[TODO] populate';
+export const SORT_TODOS = '[TODO] sort';
 
 export class ToggleAction implements Action {
   readonly type = TOGGLE_TODO;
@@ -53,5 +54,12 @@ export class AddTodoAction implements Action {
   ) {}
 }
 
+export class SortTodoAction implements Action {
+  readonly type = SORT_TODOS;
+
+  constructor(
+  ) {}
+}
+
 export type TodoActionType =
-UpdateAction | PopulateTodosAction | ToggleAction | DeleteTodoAction | AddTodoAction;
+UpdateAction | PopulateTodosAction | ToggleAction | DeleteTodoAction | AddTodoAction | SortTodoAction;

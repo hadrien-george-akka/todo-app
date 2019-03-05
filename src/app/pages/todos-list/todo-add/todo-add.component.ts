@@ -53,6 +53,7 @@ export class TodoAddComponent {
 
       const action = new TodoActions.AddTodoAction(this.todo.id, this.todo.title, this.todo.description, this.todo.isComplete);
       this.todoService.store.dispatch(action);
+      // this.todoService.sortTodoList();
 
       this.togglePannel();
       this.todoFormGroup.get('titleTodoCtrl').reset();
