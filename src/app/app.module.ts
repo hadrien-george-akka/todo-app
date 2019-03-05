@@ -14,6 +14,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { TodoService } from './core/services/todo.service';
 import { ColorPickerService } from './core/services/color-picker.service';
 import { ColorPickerComponent } from './pages/color-picker/color-picker.component';
+import { EffectsModule } from '@ngrx/effects';
+import { UpdateLocalStorageEffects } from './model/effects/update-local-storage.effects';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { ColorPickerComponent } from './pages/color-picker/color-picker.componen
     MatMenuModule,
     FlexLayoutModule,
     MatButtonModule,
-    StoreModule.forRoot(rootReducer)
+    StoreModule.forRoot(rootReducer),
+    EffectsModule.forRoot([UpdateLocalStorageEffects])
   ],
   providers: [
     TodoService,

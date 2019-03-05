@@ -26,10 +26,11 @@ export class TodoService {
   }
 
   /**
-   * Return mocked todos from todo interface
+   * Return todos from localstorage
    */
   getTodoList(): Todo[] {
-    return mockTodos();
+    console.log('TODOS : ', JSON.parse(localStorage.getItem('todos') || '[]'));
+    return JSON.parse(localStorage.getItem('todos') || '[]');
   }
 
   /**
@@ -62,8 +63,12 @@ export class TodoService {
    * @param todos List of todos
    */
   getMaxId(todos: Todo[]): number {
-    const maxIdTodo: Todo = todos.reduce((prev, current) => (prev.id > current.id) ? prev : current);
-    return  maxIdTodo.id;
+    if (todos.length > 0) {
+      const maxIdTodo: Todo = todos.reduce((prev, current) => (prev.id > current.id) ? prev : current);
+      return  maxIdTodo.id;
+    } else {
+      return 1;
+    }
   }
 
 }
