@@ -14,6 +14,9 @@ export class MyButtonComponent {
   /** Text placeholder to put inside the button */
   @Input() text: string;
 
+  /** Boolean is button disable */
+  @Input() disable: boolean;
+
   /** On button click event emitter */
   @Output() click: EventEmitter<boolean> = new EventEmitter<boolean>();
 

@@ -10,3 +10,12 @@
     transform: scale(1.1);
   }
 }
+
+.my-invalid-button {
+  padding: 0 10px !important;
+  font-family: $font-body;
+  font-size: $font-size-body;
+  opacity: 0.5;
+  cursor: not-allowed;
+
+}

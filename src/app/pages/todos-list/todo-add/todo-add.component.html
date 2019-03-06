@@ -27,7 +27,7 @@
         ></textarea>
       </mat-form-field>
       <div fxLayout="row" fxLayoutAlign="end">
-        <app-my-button [text]="'Add'" (click)="addTodo()"></app-my-button>
+        <app-my-button [text]="'Add'" [disable]="!todoFormGroup.valid" (click)="addTodo()"></app-my-button>
       </div>
     </form>
   </div>
