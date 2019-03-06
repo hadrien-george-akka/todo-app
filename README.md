@@ -39,23 +39,34 @@ This todo will contain its title and a description (which is a new information n
 - We can click on a todo (by any way) to access the updates view of the todo
 - The todo could be accessed via a unique URL
 
-## 4 : Add a new TODO
+## 4 : Add a new TODO and Delete a TODO
 
 ### Description :
-As a user I would like to add a new todo in my list
-### Acceptance criterias :
-- The todo title is required
-- The todo description can be empty
-- The newly created todo has to be on top of the list of todos
-- You are free to choose the design / interaction 
-
-## 5 : Delete a TODO
-
-### Description :
+As a user I would like to add a new todo in my list.
 As a user I would like to delete a todo in my list
 ### Acceptance criterias :
+- The todo title is required when add
+- The todo description can be empty when add
 - We can click on a todo (by any way) to delete the todo
 - You are free to choose the design / interaction 
+
+## 5 : Change application color theme (Bonus)
+
+### Description :
+As a user I would like to change the application colors as I want
+### Acceptance criterias :
+- When a user select a cpmpr theme, all the colors of the page should change
+- When a user select a color theme, the page icon should change
+- You are free to choose the design / interaction 
+
+## 6 : Save TODOs in local storage (Bonus)
+
+### Description
+As a user I would like to store my todos in browser local storage
+As a user I would like to have my todos sorted from last added to first added
+### Acceptance criteria
+- A newly created todo has to be on top of the list of todos
+- You have to use ngrx Effects 
 
 # Technical environment
 You're working in the I4DWeb Team which provides the following technical recommendations :

@@ -1,266 +1,137 @@
+@import 'src/app/theme/sass/variables';
+
 @import '~@angular/material/theming';
 @include mat-core();
 
-/* For use in src/lib/core/theming/_palette.scss */
-$md-green: (
-    50 : #e9f4e4,
-    100 : #c7e3bb,
-    200 : #a2d08d,
-    300 : #7cbd5f,
-    400 : #60af3d,
-    500 : #44a11b,
-    600 : #3e9918,
-    700 : #358f14,
-    800 : #2d8510,
-    900 : #1f7408,
-    A100 : #b3ffa4,
-    A200 : #88ff71,
-    A400 : #5dff3e,
-    A700 : #48ff25,
-    contrast: (
-        50 : #000000,
-        100 : #000000,
-        200 : #000000,
-        300 : #000000,
-        400 : #000000,
-        500 : #ffffff,
-        600 : #ffffff,
-        700 : #ffffff,
-        800 : #ffffff,
-        900 : #ffffff,
-        A100 : #000000,
-        A200 : #000000,
-        A400 : #000000,
-        A700 : #000000,
-    )
-);
+// Defines different palettes
+$todo-app-warn:                 mat-palette($mat-red); // Default warn value
 
-$md-blue: (
-    50 : #e7eff6,
-    100 : #c3d7e9,
-    200 : #9bbcda,
-    300 : #72a1cb,
-    400 : #548cbf,
-    500 : #3678b4,
-    600 : #3070ad,
-    700 : #2965a4,
-    800 : #225b9c,
-    900 : #16488c,
-    A100 : #c2daff,
-    A200 : #8fbaff,
-    A400 : #5c9bff,
-    A700 : #428cff,
-    contrast: (
-        50 : #000000,
-        100 : #000000,
-        200 : #000000,
-        300 : #000000,
-        400 : #000000,
-        500 : #ffffff,
-        600 : #ffffff,
-        700 : #ffffff,
-        800 : #ffffff,
-        900 : #ffffff,
-        A100 : #000000,
-        A200 : #000000,
-        A400 : #000000,
-        A700 : #000000,
-    )
-);
+$todo-app-redlight:             mat-palette($md-redlight);
+$todo-app-redlight-accent:      mat-palette($md-redlight, 500, 700, 900);
 
-$md-orange: (
-    50 : #f8ede1,
-    100 : #edd1b4,
-    200 : #e1b383,
-    300 : #d59551,
-    400 : #cc7e2b,
-    500 : #c36706,
-    600 : #bd5f05,
-    700 : #b55404,
-    800 : #ae4a03,
-    900 : #a13902,
-    A100 : #ffd9cb,
-    A200 : #ffb498,
-    A400 : #ff8f65,
-    A700 : #ff7d4c,
-    contrast: (
-        50 : #000000,
-        100 : #000000,
-        200 : #000000,
-        300 : #000000,
-        400 : #000000,
-        500 : #ffffff,
-        600 : #ffffff,
-        700 : #ffffff,
-        800 : #ffffff,
-        900 : #ffffff,
-        A100 : #000000,
-        A200 : #000000,
-        A400 : #000000,
-        A700 : #000000,
-    )
-);
+$todo-app-reddark:              mat-palette($md-reddark);
+$todo-app-reddark-accent:       mat-palette($md-reddark, 500, 700, 900);
 
-$md-purple: (
-    50 : #efe9ff,
-    100 : #d7c7ff,
-    200 : #bda2ff,
-    300 : #a27dff,
-    400 : #8e61ff,
-    500 : #7a45ff,
-    600 : #723eff,
-    700 : #6736ff,
-    800 : #5d2eff,
-    900 : #4a1fff,
-    A100 : #ffffff,
-    A200 : #ffffff,
-    A400 : #d7ceff,
-    A700 : #c1b5ff,
-    contrast: (
-        50 : #000000,
-        100 : #000000,
-        200 : #000000,
-        300 : #000000,
-        400 : #000000,
-        500 : #ffffff,
-        600 : #ffffff,
-        700 : #ffffff,
-        800 : #ffffff,
-        900 : #ffffff,
-        A100 : #000000,
-        A200 : #000000,
-        A400 : #000000,
-        A700 : #000000,
-    )
-);
+$todo-app-yellow:               mat-palette($md-yellow);
+$todo-app-yellow-accent:        mat-palette($md-yellow, 500, 700, 900);
 
-$md-red: (
-    50 : #fbe9e9,
-    100 : #f4c7c7,
-    200 : #eda2a2,
-    300 : #e57d7d,
-    400 : #e06161,
-    500 : #da4545,
-    600 : #d63e3e,
-    700 : #d03636,
-    800 : #cb2e2e,
-    900 : #c21f1f,
-    A100 : #fffafa,
-    A200 : #ffc7c7,
-    A400 : #ff9494,
-    A700 : #ff7a7a,
-    contrast: (
-        50 : #000000,
-        100 : #000000,
-        200 : #000000,
-        300 : #000000,
-        400 : #000000,
-        500 : #ffffff,
-        600 : #ffffff,
-        700 : #ffffff,
-        800 : #ffffff,
-        900 : #ffffff,
-        A100 : #000000,
-        A200 : #000000,
-        A400 : #000000,
-        A700 : #000000,
-    )
-);
+$todo-app-orange:               mat-palette($md-orange);
+$todo-app-orange-accent:        mat-palette($md-orange, 500, 700, 900);
 
-$md-cyan: (
-    50 : #e5f4f3,
-    100 : #bee4e1,
-    200 : #93d3cd,
-    300 : #67c1b8,
-    400 : #47b3a9,
-    500 : #26a69a,
-    600 : #229e92,
-    700 : #1c9588,
-    800 : #178b7e,
-    900 : #0d7b6c,
-    A100 : #adfff3,
-    A200 : #7affec,
-    A400 : #47ffe4,
-    A700 : #2dffe0,
-    contrast: (
-        50 : #000000,
-        100 : #000000,
-        200 : #000000,
-        300 : #000000,
-        400 : #000000,
-        500 : #ffffff,
-        600 : #ffffff,
-        700 : #ffffff,
-        800 : #ffffff,
-        900 : #ffffff,
-        A100 : #000000,
-        A200 : #000000,
-        A400 : #000000,
-        A700 : #000000,
-    )
-);
+$todo-app-greenlight:           mat-palette($md-greenlight);
+$todo-app-greenlight-accent:    mat-palette($md-greenlight, 500, 700, 900);
 
+$todo-app-greendark:            mat-palette($md-greendark);
+$todo-app-greendark-accent:     mat-palette($md-greendark, 500, 700, 900);
 
+$todo-app-cyanlight:            mat-palette($md-cyanlight);
+$todo-app-cyanlight-accent:     mat-palette($md-cyanlight, 500, 700, 900);
 
-// // Defines different palettes
-$todo-app-warn:          mat-palette($mat-red); // Default warn value
+$todo-app-cyandark:             mat-palette($md-cyandark);
+$todo-app-cyandark-accent:      mat-palette($md-cyandark, 500, 700, 900);
 
-$todo-app-green:         mat-palette($md-green);
-$todo-app-green-accent:  mat-palette($md-green, 500, 700, 900);
+$todo-app-bluelight:            mat-palette($md-bluelight);
+$todo-app-bluelight-accent:     mat-palette($md-bluelight, 500, 700, 900);
 
-$todo-app-blue:          mat-palette($md-blue);
-$todo-app-blue-accent:   mat-palette($md-blue, 500, 700, 900);
+$todo-app-bluedark:             mat-palette($md-bluedark);
+$todo-app-bluedark-accent:      mat-palette($md-bluedark, 500, 700, 900);
 
-$todo-app-orange:        mat-palette($md-orange);
-$todo-app-orange-accent: mat-palette($md-orange, 500, 700, 900);
+$todo-app-purplelight:          mat-palette($md-purplelight);
+$todo-app-purplelight-accent:   mat-palette($md-purplelight, 500, 700, 900);
 
-$todo-app-purple:        mat-palette($md-purple);
-$todo-app-purple-accent: mat-palette($md-purple, 500, 700, 900);
+$todo-app-purpledark:           mat-palette($md-purpledark);
+$todo-app-purpledark-accent:    mat-palette($md-purpledark, 500, 700, 900);
 
-$todo-app-red:           mat-palette($md-red);
-$todo-app-red-accent:    mat-palette($md-red, 500, 700, 900);
+$todo-app-grey:                 mat-palette($md-grey);
+$todo-app-grey-accent:          mat-palette($md-grey, 500, 700, 900);
 
-$todo-app-cyan:          mat-palette($md-cyan);
-$todo-app-cyan-accent:   mat-palette($md-cyan, 500, 700, 900);
+$todo-app-black:                mat-palette($md-black);
+$todo-app-black-accent:         mat-palette($md-black, 500, 700, 900);
 
-// // Defines different themes
-$todo-app-theme-green: mat-light-theme(
-  $todo-app-green,
-  $todo-app-green-accent,
+// Defines different themes
+$todo-app-theme-redlight: mat-light-theme(
+  $todo-app-redlight,
+  $todo-app-redlight-accent,
   $todo-app-warn,
 );
 
+$todo-app-theme-reddark: mat-light-theme(
+  $todo-app-reddark,
+  $todo-app-reddark-accent,
+  $todo-app-warn,
+);
 
-$todo-app-theme-blue: mat-light-theme(
-  $todo-app-blue,
-  $todo-app-blue-accent,
-  $todo-app-warn
+$todo-app-theme-yellow: mat-light-theme(
+  $todo-app-yellow,
+  $todo-app-yellow-accent,
+  $todo-app-warn,
 );
 
 $todo-app-theme-orange: mat-light-theme(
   $todo-app-orange,
   $todo-app-orange-accent,
-  $todo-app-warn
+  $todo-app-warn,
 );
 
-$todo-app-theme-purple: mat-light-theme(
-  $todo-app-purple,
-  $todo-app-purple-accent,
-  $todo-app-warn
+$todo-app-theme-greenlight: mat-light-theme(
+  $todo-app-greenlight,
+  $todo-app-greenlight-accent,
+  $todo-app-warn,
 );
 
-$todo-app-theme-red: mat-light-theme(
-  $todo-app-red,
-  $todo-app-red-accent,
-  $todo-app-warn
+$todo-app-theme-greendark: mat-light-theme(
+  $todo-app-greendark,
+  $todo-app-greendark-accent,
+  $todo-app-warn,
 );
 
-$todo-app-theme-cyan: mat-light-theme(
-  $todo-app-cyan,
-  $todo-app-cyan-accent,
-  $todo-app-warn
+$todo-app-theme-cyanlight: mat-light-theme(
+  $todo-app-cyanlight,
+  $todo-app-cyanlight-accent,
+  $todo-app-warn,
 );
 
+$todo-app-theme-cyandark: mat-light-theme(
+  $todo-app-cyandark,
+  $todo-app-cyandark-accent,
+  $todo-app-warn,
+);
+
+$todo-app-theme-bluelight: mat-light-theme(
+  $todo-app-bluelight,
+  $todo-app-bluelight-accent,
+  $todo-app-warn,
+);
+
+$todo-app-theme-bluedark: mat-light-theme(
+  $todo-app-bluedark,
+  $todo-app-bluedark-accent,
+  $todo-app-warn,
+);
+
+$todo-app-theme-purplelight: mat-light-theme(
+  $todo-app-purplelight,
+  $todo-app-purplelight-accent,
+  $todo-app-warn,
+);
+
+$todo-app-theme-purpledark: mat-light-theme(
+  $todo-app-purpledark,
+  $todo-app-purpledark-accent,
+  $todo-app-warn,
+);
+
+$todo-app-theme-grey: mat-light-theme(
+  $todo-app-grey,
+  $todo-app-grey-accent,
+  $todo-app-warn,
+);
+
+$todo-app-theme-black: mat-light-theme(
+  $todo-app-black,
+  $todo-app-black-accent,
+  $todo-app-warn,
+);
 
 @mixin my-theme-mixin($theme) {
   $primary: map-get(
