@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { BehaviorSubject } from 'rxjs';
 import { OverlayContainer, Overlay } from '@angular/cdk/overlay';
 
@@ -21,13 +22,16 @@ export class ColorPickerService {
    * @param overlayContainer Material CDK allows floating pannel to have style
    */
   constructor(
-    private overlayContainer: OverlayContainer
+    private overlayContainer: OverlayContainer,
+    @Inject(DOCUMENT) private document: HTMLDocument
   ) {
     const storageClass = localStorage.getItem('color-picker');
 
     if (storageClass) {
       overlayContainer.getContainerElement().classList.add(storageClass);
       this.colorClass$.next(storageClass);
+      const icon = storageClass.split('-')[3];
+      this.document.getElementById('appFavicon').setAttribute('href', `/assets/${icon}.ico`);
     } else {
       overlayContainer.getContainerElement().classList.add(this.prefixClass + this.defaultClass);
     }
