@@ -23,13 +23,14 @@ export class TodoService {
     this.todoList = this.getTodoList();
     this.maxId = this.getMaxId(this.todoList);
     this.store.dispatch(new TodoActions.PopulateTodosAction(this.todoList));
+    this.store.dispatch(new TodoActions.SortTodoAction());
   }
 
   /**
    * Return todos from localstorage
    */
   getTodoList(): Todo[] {
-    console.log('TODOS : ', JSON.parse(localStorage.getItem('todos') || '[]'));
+    // console.log('TODOS : ', JSON.parse(localStorage.getItem('todos') || '[]'));
     return JSON.parse(localStorage.getItem('todos') || '[]');
   }
 

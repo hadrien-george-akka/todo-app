@@ -1,5 +1,6 @@
 import { Todo } from './todo.interface';
 import * as TodoActions from './todo.actions';
+import { stat } from 'fs';
 
 const initialState: Todo[] = [];
 
@@ -46,6 +47,14 @@ export function TodosReducer(state: Todo[] = initialState, action: TodoActions.T
           description: action.description,
           isComplete: action.isComplete
         }
+      ];
+    }
+    case TodoActions.SORT_TODOS: {
+      return [
+        ...state
+          .sort((a: Todo, b: Todo) =>
+            (a.id > b.id) ? -1 : 1
+        )
       ];
     }
     default: {

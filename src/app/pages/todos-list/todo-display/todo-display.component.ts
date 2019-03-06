@@ -28,11 +28,10 @@ export class TodoDisplayComponent implements OnInit {
 
   /**
    * Component dependencies
-   * @param store NgRx store
    * @param router Angular router
+   * @param todoService Todo service
    */
   constructor(
-    private store: Store<AppState>,
     private router: Router,
     private todoService: TodoService
   ) {
@@ -52,7 +51,7 @@ export class TodoDisplayComponent implements OnInit {
     // Manage todo state value when changes
     this.todoFormGroup.get('stateTodoCtrl').valueChanges.subscribe(state => {
       const action = new TodoActions.ToggleAction(this.todo.id);
-      this.store.dispatch(action);
+      this.todoService.store.dispatch(action);
     });
 
 
