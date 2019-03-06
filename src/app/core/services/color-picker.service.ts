@@ -11,7 +11,7 @@ export class ColorPickerService {
   prefixClass = 'todo-app-theme';
 
   /** Default theme css class */
-  defaultClass = '-green';
+  defaultClass = '-greenlight';
 
   /** Subject containing the current css theme class */
   colorClass$: BehaviorSubject<string> = new BehaviorSubject(this.prefixClass + this.defaultClass);

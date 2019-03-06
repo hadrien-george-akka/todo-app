@@ -28,14 +28,44 @@
 }
 
 .button {
-  &-green {
+  &-redlight {
     @include color-button;
-    border-color: mat-color($todo-app-green, 500);
+    border-color: mat-color($todo-app-redlight, 500);
   }
 
-  &-blue {
+  &-yellow {
     @include color-button;
-    border-color: mat-color($todo-app-blue, 500);
+    border-color: mat-color($todo-app-yellow, 500);
+  }
+
+  &-greenlight {
+    @include color-button;
+    border-color: mat-color($todo-app-greenlight, 500);
+  }
+  
+  &-cyanlight {
+    @include color-button;
+    border-color: mat-color($todo-app-cyanlight, 500);
+  }
+
+  &-bluelight {
+    @include color-button;
+    border-color: mat-color($todo-app-bluelight, 500);
+  }
+
+  &-purplelight {
+    @include color-button;
+    border-color: mat-color($todo-app-purplelight, 500);
+  }
+
+  &-grey {
+    @include color-button;
+    border-color: mat-color($todo-app-grey, 500);
+  }
+
+  &-reddark {
+    @include color-button;
+    border-color: mat-color($todo-app-reddark, 500);
   }
 
   &-orange {
@@ -43,19 +73,29 @@
     border-color: mat-color($todo-app-orange, 500);
   }
 
-  &-purple {
+  &-greendark {
     @include color-button;
-    border-color: mat-color($todo-app-purple, 500);
+    border-color: mat-color($todo-app-greendark, 500);
+  }
+  
+  &-cyandark {
+    @include color-button;
+    border-color: mat-color($todo-app-cyandark, 500);
   }
 
-  &-red {
+  &-bluedark {
     @include color-button;
-    border-color: mat-color($todo-app-red, 500);
+    border-color: mat-color($todo-app-bluedark, 500);
   }
 
-  &-cyan {
+  &-purpledark {
     @include color-button;
-    border-color: mat-color($todo-app-cyan, 500);
+    border-color: mat-color($todo-app-purpledark, 500);
+  }
+
+  &-black {
+    @include color-button;
+    border-color: mat-color($todo-app-black, 500);
   }
 }
 

@@ -1,16 +1,22 @@
 @import 'app/theme/sass/variables';
-@import "src/app/theme/sass/my-theme";
+@import 'src/app/theme/sass/my-theme';
 
 /* You can add global styles to this file, and also import other style files */
 
-.todo-app-theme-green {
-  $theme: $todo-app-theme-green;
+.todo-app-theme-redlight {
+  $theme: $todo-app-theme-redlight;
   @include angular-material-theme($theme);
   @include my-theme-mixin($theme)
 }
 
-.todo-app-theme-blue {
-  $theme: $todo-app-theme-blue;
+.todo-app-theme-reddark {
+  $theme: $todo-app-theme-reddark;
+  @include angular-material-theme($theme);
+  @include my-theme-mixin($theme)
+}
+
+.todo-app-theme-yellow {
+  $theme: $todo-app-theme-yellow;
   @include angular-material-theme($theme);
   @include my-theme-mixin($theme)
 }
@@ -21,20 +27,62 @@
   @include my-theme-mixin($theme)
 }
 
-.todo-app-theme-purple {
-  $theme: $todo-app-theme-purple;
+.todo-app-theme-greenlight {
+  $theme: $todo-app-theme-greenlight;
   @include angular-material-theme($theme);
   @include my-theme-mixin($theme)
 }
 
-.todo-app-theme-red {
-  $theme: $todo-app-theme-red;
+.todo-app-theme-greendark {
+  $theme: $todo-app-theme-greendark;
   @include angular-material-theme($theme);
   @include my-theme-mixin($theme)
 }
 
-.todo-app-theme-cyan {
-  $theme: $todo-app-theme-cyan;
+.todo-app-theme-cyanlight {
+  $theme: $todo-app-theme-cyanlight;
+  @include angular-material-theme($theme);
+  @include my-theme-mixin($theme)
+}
+
+.todo-app-theme-cyandark {
+  $theme: $todo-app-theme-cyandark;
+  @include angular-material-theme($theme);
+  @include my-theme-mixin($theme)
+}
+
+.todo-app-theme-bluelight {
+  $theme: $todo-app-theme-bluelight;
+  @include angular-material-theme($theme);
+  @include my-theme-mixin($theme)
+}
+
+.todo-app-theme-bluedark {
+  $theme: $todo-app-theme-bluedark;
+  @include angular-material-theme($theme);
+  @include my-theme-mixin($theme)
+}
+
+.todo-app-theme-purplelight {
+  $theme: $todo-app-theme-purplelight;
+  @include angular-material-theme($theme);
+  @include my-theme-mixin($theme)
+}
+
+.todo-app-theme-purpledark {
+  $theme: $todo-app-theme-purpledark;
+  @include angular-material-theme($theme);
+  @include my-theme-mixin($theme)
+}
+
+.todo-app-theme-grey {
+  $theme: $todo-app-theme-grey;
+  @include angular-material-theme($theme);
+  @include my-theme-mixin($theme)
+}
+
+.todo-app-theme-black {
+  $theme: $todo-app-theme-black;
   @include angular-material-theme($theme);
   @include my-theme-mixin($theme)
 }
