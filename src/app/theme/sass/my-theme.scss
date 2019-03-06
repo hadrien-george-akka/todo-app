@@ -286,6 +286,12 @@ $todo-app-theme-cyan: mat-light-theme(
     }
   }
 
+  .my-invalid-button {
+    background-color: mat-color($primary, 500);
+    color: mat-contrast($primary, 500);
+    border: solid mat-color($primary, 900) 1px ;
+  }
+
   .add-expansion-panel {
     margin: 20px !important;
     border: solid 1px mat-color($primary, 900);

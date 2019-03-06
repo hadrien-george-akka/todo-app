@@ -1,3 +1,5 @@
-<button mat-button class="my-button" (click)="onClickButton($event)">
+<button mat-button 
+  [ngClass]="disable ? 'my-invalid-button' : 'my-button'"
+  (click)="onClickButton($event)">
   {{ text }}
 </button>
