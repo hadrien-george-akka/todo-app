@@ -2,8 +2,9 @@
   Transfer
 </div>
 <div mat-dialog-content>
-  <form [formGroup]="transferFormGroup">
-    <mat-form-field>
+  <form [formGroup]="transferFormGroup" fxLayout="column">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <mat-form-field fxFlex="90">
         <textarea 
         matInput
         placeholder="Import"
@@ -11,5 +12,30 @@
         rows="3"
         ></textarea>
       </mat-form-field>
+      <div>
+        <button mat-button class="button-icon">
+          <i class="material-icons-outlined popup-icon" color="primary">
+            archive
+          </i>
+        </button>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-form-field fxFlex="90">
+          <textarea 
+          matInput
+          placeholder="Export"
+          formControlName="exportCtrl"
+          rows="3"
+          ></textarea>
+        </mat-form-field>
+        <div>
+          <button mat-button class="button-icon">
+            <i class="material-icons-outlined popup-icon" color="primary">
+              file_copy
+            </i>
+          </button>
+        </div>
+      </div>
   </form>
 </div>

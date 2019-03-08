@@ -20,12 +20,10 @@ import { TodoService } from './core/services/todo.service';
 import { ColorPickerService } from './core/services/color-picker.service';
 import { UpdateLocalStorageEffects } from './model/effects/update-local-storage.effects';
 import { SortTodosEffects } from './model/effects/sort-by-id.effects';
-import { PagesComponent } from './pages/pages.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PagesComponent,
   ],
   imports: [
     BrowserModule,

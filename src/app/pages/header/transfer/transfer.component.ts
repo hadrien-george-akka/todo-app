@@ -23,7 +23,8 @@ export class TransferComponent implements OnInit {
     private todoService: TodoService
   ) {
     this.transferFormGroup = new FormGroup({
-      importCtrl: new FormControl('')
+      importCtrl: new FormControl(''),
+      exportCtrl: new FormControl('')
     });
   }
 

@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
 
   openTransferDialog() {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.height = '400px';
+    dialogConfig.height = '410px';
     dialogConfig.width = '600px';
 
     const dialogRef = this.dialog.open(TransferComponent, dialogConfig);
