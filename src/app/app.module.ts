@@ -7,7 +7,6 @@ import { StoreModule } from '@ngrx/store';
 import { AppComponent } from './app.component';
 import { PagesModule } from './pages/pages.module';
 import { ThemeModule } from './theme/theme.module';
-import { AppRoutingModule } from './app-routing.module';
 import { rootReducer } from './app.reducer';
 import { MatMenuModule, MatButtonModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -16,21 +15,24 @@ import { BROWSER_FAVICONS_CONFIG } from './core/services/color-picker.service';
 import { BrowserFavicons } from './core/services/color-picker.service';
 import { Favicons } from './core/services/color-picker.service';
 
+import { routes } from './app.routing';
 import { TodoService } from './core/services/todo.service';
 import { ColorPickerService } from './core/services/color-picker.service';
 import { UpdateLocalStorageEffects } from './model/effects/update-local-storage.effects';
 import { SortTodosEffects } from './model/effects/sort-by-id.effects';
+import { PagesComponent } from './pages/pages.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    PagesComponent
   ],
   imports: [
     BrowserModule,
     RouterModule,
     PagesModule,
     ThemeModule,
-    AppRoutingModule,
+    RouterModule.forRoot(routes),
     FlexLayoutModule,
     StoreModule.forRoot(rootReducer),
     EffectsModule.forRoot([
