@@ -9,7 +9,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule, MatExpansionModule } from '@angular/material';
+import { MatInputModule, MatExpansionModule, MatMenuModule } from '@angular/material';
 
 import { ThemeModule } from '../theme/theme.module';
 import { TodoAddComponent } from './todos-list/todo-add/todo-add.component';
@@ -17,10 +17,14 @@ import { TodosListComponent } from './todos-list/todos-list.component';
 import { TodoDisplayComponent } from './todos-list/todo-display/todo-display.component';
 import { TodoUpdateComponent } from './todo-update/todo-update.component';
 import { TodoComponent } from './todo/todo.component';
+import { HeaderComponent } from './header/header.component';
+import { ColorPickerComponent } from './header/color-picker/color-picker.component';
 
 
 @NgModule({
   declarations: [
+    HeaderComponent,
+    ColorPickerComponent,
     TodoAddComponent,
     TodosListComponent,
     TodoDisplayComponent,
@@ -33,6 +37,7 @@ import { TodoComponent } from './todo/todo.component';
     RouterModule,
     FlexLayoutModule,
     ThemeModule,
+    MatMenuModule,
     MatCardModule,
     MatCheckboxModule,
     ReactiveFormsModule,
@@ -41,5 +46,8 @@ import { TodoComponent } from './todo/todo.component';
     MatInputModule,
     MatExpansionModule
   ],
+  exports: [
+    HeaderComponent
+  ]
 })
 export class PagesModule { }

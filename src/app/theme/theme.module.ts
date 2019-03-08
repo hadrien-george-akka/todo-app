@@ -7,16 +7,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 
 import { MyButtonComponent } from './my-button/my-button.component';
-import { HeaderComponent } from './header/header.component';
-import { ColorPickerComponent } from './header/color-picker/color-picker.component';
-import { MatMenuModule } from '@angular/material';
-
 
 @NgModule({
   declarations: [
     MyButtonComponent,
-    HeaderComponent,
-    ColorPickerComponent
   ],
   imports: [
     CommonModule,
@@ -24,11 +18,9 @@ import { MatMenuModule } from '@angular/material';
     FlexLayoutModule,
     ReactiveFormsModule,
     MatButtonModule,
-    MatMenuModule,
   ],
   exports: [
     MyButtonComponent,
-    HeaderComponent
   ]
 })
 export class ThemeModule { }
