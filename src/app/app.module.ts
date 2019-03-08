@@ -18,14 +18,12 @@ import { Favicons } from './core/services/color-picker.service';
 
 import { TodoService } from './core/services/todo.service';
 import { ColorPickerService } from './core/services/color-picker.service';
-import { ColorPickerComponent } from './pages/color-picker/color-picker.component';
 import { UpdateLocalStorageEffects } from './model/effects/update-local-storage.effects';
 import { SortTodosEffects } from './model/effects/sort-by-id.effects';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ColorPickerComponent
   ],
   imports: [
     BrowserModule,
@@ -33,9 +31,7 @@ import { SortTodosEffects } from './model/effects/sort-by-id.effects';
     PagesModule,
     ThemeModule,
     AppRoutingModule,
-    MatMenuModule,
     FlexLayoutModule,
-    MatButtonModule,
     StoreModule.forRoot(rootReducer),
     EffectsModule.forRoot([
       UpdateLocalStorageEffects,

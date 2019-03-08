@@ -16,6 +16,8 @@ export class AppComponent {
   constructor(
     private colorPicker: ColorPickerService
   ) {
-    this.themeClass = this.colorPicker.getColorClass();
+    setTimeout(() => {
+      this.themeClass = this.colorPicker.getColorClass();
+    });
   }
 }

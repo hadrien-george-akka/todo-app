@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ColorPickerService } from '../../core/services/color-picker.service';
-import { Favicons } from '../../core/services/color-picker.service';
+import { ColorPickerService } from '../../../core/services/color-picker.service';
+import { Favicons } from '../../../core/services/color-picker.service';
 
 @Component({
   selector: 'app-color-picker',

@@ -1,7 +1,6 @@
 import { Injectable, Inject, InjectionToken } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
 import { BehaviorSubject } from 'rxjs';
-import { OverlayContainer, Overlay } from '@angular/cdk/overlay';
+import { OverlayContainer } from '@angular/cdk/overlay';
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +45,7 @@ export class ColorPickerService {
     const classTheme = this.prefixClass + className;
     this.addClassToOverlayContainer(classTheme);
     this.colorClass$.next(classTheme);
+
     localStorage.setItem('color-picker', className);
   }
 

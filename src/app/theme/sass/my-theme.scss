@@ -147,6 +147,12 @@ $todo-app-theme-black: mat-light-theme(
     background-color: mat-color($primary, 50);
   }
 
+  .header {
+    background-color: mat-color($primary, 500);
+    color: mat-contrast($primary, 500);
+    border-bottom: solid mat-color($primary, 900) 1px;
+  }
+
   .my-button {
     background-color: mat-color($primary, 500);
     color: mat-contrast($primary, 500);
