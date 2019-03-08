@@ -1,5 +1,12 @@
 <div class="header">
-  <div class="content" fxLayout="row" fxLayoutAlign="end">
+  <div class="content header-elements" fxLayout="row" fxLayoutAlign="end">
+    <div class="color-picker"  fxLayout="row" fxLayoutAlign="start">
+      <button mat-button (click)="openTransferDialog()">
+        <i class="material-icons transfer-icon" color="primary">
+          archive
+        </i>
+      </button>
+      </div>
     <app-color-picker></app-color-picker>
   </div>
 </div>

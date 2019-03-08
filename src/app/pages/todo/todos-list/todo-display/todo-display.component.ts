@@ -59,7 +59,7 @@ export class TodoDisplayComponent implements OnInit {
    * Navigates to the Todo update component on edit button click
    */
   showTodoUpdate(): void {
-    this.router.navigateByUrl(`/update/${this.todo.id}`);
+    this.router.navigateByUrl(`/todo/update/${this.todo.id}`);
   }
 
   /**

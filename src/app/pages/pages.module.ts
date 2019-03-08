@@ -9,27 +9,28 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule, MatExpansionModule, MatMenuModule } from '@angular/material';
+import { MatInputModule, MatExpansionModule, MatMenuModule, MatDialogModule } from '@angular/material';
 
 import { ThemeModule } from '../theme/theme.module';
-import { TodoAddComponent } from './todos-list/todo-add/todo-add.component';
-import { TodosListComponent } from './todos-list/todos-list.component';
-import { TodoDisplayComponent } from './todos-list/todo-display/todo-display.component';
-import { TodoUpdateComponent } from './todo-update/todo-update.component';
+import { TodoAddComponent } from './todo/todos-list/todo-add/todo-add.component';
+import { TodosListComponent } from './todo/todos-list/todos-list.component';
+import { TodoDisplayComponent } from './todo/todos-list/todo-display/todo-display.component';
+import { TodoUpdateComponent } from './todo/todo-update/todo-update.component';
 import { TodoComponent } from './todo/todo.component';
 import { HeaderComponent } from './header/header.component';
 import { ColorPickerComponent } from './header/color-picker/color-picker.component';
-
+import { TransferComponent } from './header/transfer/transfer.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     ColorPickerComponent,
+    TransferComponent,
     TodoAddComponent,
     TodosListComponent,
     TodoDisplayComponent,
     TodoUpdateComponent,
-    TodoComponent
+    TodoComponent,
   ],
   imports: [
     CommonModule,
@@ -44,10 +45,14 @@ import { ColorPickerComponent } from './header/color-picker/color-picker.compone
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDialogModule
   ],
   exports: [
     HeaderComponent
+  ],
+  entryComponents: [
+    TransferComponent
   ]
 })
 export class PagesModule { }

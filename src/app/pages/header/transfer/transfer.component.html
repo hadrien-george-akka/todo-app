@@ -1,0 +1,15 @@
+<div mat-dialog-title class="title-medium">
+  Transfer
+</div>
+<div mat-dialog-content>
+  <form [formGroup]="transferFormGroup">
+    <mat-form-field>
+        <textarea 
+        matInput
+        placeholder="Import"
+        formControlName="importCtrl"
+        rows="3"
+        ></textarea>
+      </mat-form-field>
+  </form>
+</div>

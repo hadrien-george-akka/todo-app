@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material';
+
+import { TransferComponent } from './transfer/transfer.component';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit() {
+  }
+
+  openTransferDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.height = '400px';
+    dialogConfig.width = '600px';
+
+    const dialogRef = this.dialog.open(TransferComponent, dialogConfig);
   }
 
 }

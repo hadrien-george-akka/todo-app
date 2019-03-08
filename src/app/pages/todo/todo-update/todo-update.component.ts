@@ -102,6 +102,6 @@ export class TodoUpdateComponent implements OnInit {
    * Navigate to the todo list
    */
   navigateToList() {
-    this.router.navigateByUrl('/list');
+    this.router.navigateByUrl('/todo/list');
   }
 }

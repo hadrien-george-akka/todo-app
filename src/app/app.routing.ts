@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
-import { TodosListComponent } from './pages/todos-list/todos-list.component';
-import { TodoUpdateComponent } from './pages/todo-update/todo-update.component';
+import { TodosListComponent } from './pages/todo/todos-list/todos-list.component';
+import { TodoUpdateComponent } from './pages/todo/todo-update/todo-update.component';
 import { TodoComponent } from './pages/todo/todo.component';
 import { PagesComponent } from './pages/pages.component';
 
@@ -35,11 +35,11 @@ export const routes: Routes = [
   //   redirectTo: 'todo'
   // }
   {
-    path: '',
+    path: 'todo',
     component: PagesComponent,
     children: [
       {
-        path: 'todo',
+        path: '',
         component: TodoComponent,
         children: [
           {
