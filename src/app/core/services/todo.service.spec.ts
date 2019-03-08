@@ -1,7 +1,7 @@
 
 import { TodoService } from './todo.service';
 import { TestBed } from '@angular/core/testing';
-import { Todo } from 'src/app/model/todo.interface';
+import { Todo } from 'src/app/model/model.interface';
 import { Store, StoreModule } from '@ngrx/store';
 import { AppState, rootReducer } from 'src/app/app.reducer';
 

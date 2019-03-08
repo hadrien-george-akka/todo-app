@@ -8,10 +8,9 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { MyButtonComponent } from './my-button/my-button.component';
 
-
 @NgModule({
   declarations: [
-    MyButtonComponent
+    MyButtonComponent,
   ],
   imports: [
     CommonModule,

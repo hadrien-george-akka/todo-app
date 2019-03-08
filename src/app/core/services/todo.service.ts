@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 
-import { Todo, mockTodos } from '../../model/todo.interface';
+import { Todo, mockTodos } from '../../model/model.interface';
 import { AppState } from 'src/app/app.reducer';
 import { Store } from '@ngrx/store';
-import * as TodoActions from './../../model/todo.actions';
+import * as TodoActions from '../../model/todo/todo.actions';
 
 /**
  * Todo data service

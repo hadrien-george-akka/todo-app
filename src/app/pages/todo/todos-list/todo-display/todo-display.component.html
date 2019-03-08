@@ -1,0 +1,28 @@
+<form [formGroup]="todoFormGroup">
+  <mat-expansion-panel>
+
+    <mat-expansion-panel-header [collapsedHeight]="isMobile ? '49px' : '42px'" [expandedHeight]="isMobile ? '49px' : '42px'">
+      <mat-checkbox formControlName="stateTodoCtrl" class="checkbox" [ngClass]="{'mobile-size': isMobile}">
+        <div [ngClass]="{'strike-text': isTodosComplete}">
+          <p class="title">{{ todo.title }}</p>
+        </div>
+      </mat-checkbox>
+    </mat-expansion-panel-header>
+
+    <div fxLayout="row" fxLayoutAlign="none start">
+      <p class="description" fxFlex="85">{{ todo.description }}</p>
+      <div fxLayout="row" fxLayoutAlign="end">
+        <button mat-button (click)="showTodoUpdate()">
+          <i class="material-icons edit-button">
+            edit
+          </i>
+        </button>
+        <button mat-button (click)="deleteTodo()">
+          <i class="material-icons delete-button">
+            delete
+          </i>
+        </button>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</form>

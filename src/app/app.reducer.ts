@@ -1,7 +1,7 @@
 import { ActionReducerMap } from '@ngrx/store';
 
-import { TodosReducer } from './model/todo.reducer';
-import { Todo } from './model/todo.interface';
+import { TodosReducer } from './model/todo/todo.reducer';
+import { Todo } from './model/model.interface';
 
 export interface AppState {
   todos: Todo[];

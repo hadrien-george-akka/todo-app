@@ -1,0 +1,56 @@
+<div mat-dialog-title class="title-medium">
+  Transfer
+</div>
+<div mat-dialog-content>
+  <form [formGroup]="transferFormGroup" fxLayout="column">
+    <!-- Import -->
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <mat-form-field fxFlex="90">
+        <textarea 
+          matInput
+          placeholder="Import"
+          formControlName="importCtrl"
+          (input)="checkImportValidity()"
+          (change)="checkImportValidity()"
+          rows="4"
+        >
+        </textarea>
+          <mat-error *ngIf="importCtrl.errors && importCtrl.hasError('todosError')">
+            The todo list is invalid
+          </mat-error>
+          <mat-error *ngIf="importCtrl.errors && importCtrl.hasError('colorThemeError')">
+            The color theme is invalid
+          </mat-error>
+          <mat-error *ngIf="importCtrl.errors && importCtrl.hasError('jsonError')">
+            The JSON is invalid
+          </mat-error>
+      </mat-form-field>
+      <div>
+        <button mat-button class="button-icon" (click)="importJson()" [disabled]="importCtrl.errors">
+          <i class="material-icons-outlined popup-icon" color="primary">
+            archive
+          </i>
+        </button>
+      </div>
+    </div>
+    <!-- Export -->
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-form-field fxFlex="90">
+          <textarea 
+          matInput
+          placeholder="Export"
+          formControlName="exportCtrl"
+          rows="4"
+          #exportText
+          ></textarea>
+        </mat-form-field>
+        <div>
+          <button mat-button class="button-icon" (click)="copyExportText(exportText)">
+            <i class="material-icons-outlined popup-icon" color="primary">
+              file_copy
+            </i>
+          </button>
+        </div>
+      </div>
+  </form>
+</div>

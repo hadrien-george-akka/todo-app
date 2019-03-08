@@ -196,3 +196,9 @@ hr.line {
 .mat-expansion-panel-content > .mat-expansion-panel-body {
   padding: 0 0 10px 0 !important;
 }
+
+// ------ Mat snack bar ------
+
+.snack-bar-custom .mat-button {
+  width: 30px;
+}
