@@ -20,7 +20,7 @@ import { MyButtonComponent } from './my-button/my-button.component';
     MatButtonModule,
   ],
   exports: [
-    MyButtonComponent,
+    MyButtonComponent
   ]
 })
 export class ThemeModule { }

@@ -9,7 +9,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule, MatExpansionModule, MatMenuModule, MatDialogModule } from '@angular/material';
+import { MatInputModule, MatExpansionModule, MatMenuModule, MatDialogModule, MatSnackBar, MatSnackBarModule } from '@angular/material';
 
 import { ThemeModule } from '../theme/theme.module';
 import { TodoAddComponent } from './todo/todos-list/todo-add/todo-add.component';
@@ -20,6 +20,7 @@ import { TodoComponent } from './todo/todo.component';
 import { HeaderComponent } from './header/header.component';
 import { ColorPickerComponent } from './header/color-picker/color-picker.component';
 import { TransferComponent } from './header/transfer/transfer.component';
+
 
 @NgModule({
   declarations: [
@@ -46,13 +47,14 @@ import { TransferComponent } from './header/transfer/transfer.component';
     MatFormFieldModule,
     MatInputModule,
     MatExpansionModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
   exports: [
     HeaderComponent
   ],
   entryComponents: [
-    TransferComponent
+    TransferComponent,
   ]
 })
 export class PagesModule { }

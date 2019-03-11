@@ -9,7 +9,7 @@
         matInput
         placeholder="Import"
         formControlName="importCtrl"
-        rows="3"
+        rows="4"
         ></textarea>
       </mat-form-field>
       <div>
@@ -26,11 +26,12 @@
           matInput
           placeholder="Export"
           formControlName="exportCtrl"
-          rows="3"
+          rows="4"
+          #exportText
           ></textarea>
         </mat-form-field>
         <div>
-          <button mat-button class="button-icon">
+          <button mat-button class="button-icon" (click)="copyExportText(exportText)">
             <i class="material-icons-outlined popup-icon" color="primary">
               file_copy
             </i>
