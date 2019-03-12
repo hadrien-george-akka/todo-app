@@ -46,7 +46,7 @@ export class ColorPickerService {
     this.addClassToOverlayContainer(classTheme);
     this.colorClass$.next(classTheme);
 
-    localStorage.setItem('color-picker', className);
+    localStorage.setItem('colorTheme', className);
   }
 
   addClassToOverlayContainer(className: string): void {

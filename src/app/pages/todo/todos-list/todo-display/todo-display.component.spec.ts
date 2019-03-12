@@ -10,8 +10,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { rootReducer , AppState} from '../../../../app.reducer';
-import { Todo } from 'src/app/model/todo.interface';
-import * as TodoActions from '../../../../model/todo.actions';
+import { Todo } from 'src/app/model/model.interface';
+import * as TodoActions from '../../../../model/todo/todo.actions';
 import { TodoDisplayComponent } from './todo-display.component';
 import { TodoService } from 'src/app/core/services/todo.service';
 import { TestingCompiler } from '@angular/core/testing/src/test_compiler';

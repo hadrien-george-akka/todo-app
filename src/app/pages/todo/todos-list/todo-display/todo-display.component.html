@@ -1,8 +1,8 @@
 <form [formGroup]="todoFormGroup">
   <mat-expansion-panel>
 
-    <mat-expansion-panel-header [collapsedHeight]="'42px'" [expandedHeight]="'42px'">
-      <mat-checkbox formControlName="stateTodoCtrl" class="checkbox">
+    <mat-expansion-panel-header [collapsedHeight]="isMobile ? '49px' : '42px'" [expandedHeight]="isMobile ? '49px' : '42px'">
+      <mat-checkbox formControlName="stateTodoCtrl" class="checkbox" [ngClass]="{'mobile-size': isMobile}">
         <div [ngClass]="{'strike-text': isTodosComplete}">
           <p class="title">{{ todo.title }}</p>
         </div>
@@ -24,6 +24,5 @@
         </button>
       </div>
     </div>
-
   </mat-expansion-panel>
 </form>

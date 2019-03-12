@@ -1,6 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { ColorPickerComponent } from './pages/color-picker/color-picker.component';
+import { ColorPickerComponent } from './pages/header/color-picker/color-picker.component';
 import {
   RouterTestingModule
 } from '@angular/router/testing';

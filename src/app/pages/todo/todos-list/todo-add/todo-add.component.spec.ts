@@ -8,7 +8,7 @@ import { AppState, rootReducer } from 'src/app/app.reducer';
 import { TodoAddComponent } from './todo-add.component';
 import { TodoService } from 'src/app/core/services/todo.service';
 import { MyButtonComponent } from 'src/app/theme/my-button/my-button.component';
-import * as TodoActions from '../../../../model/todo.actions';
+import * as TodoActions from '../../../../model/todo/todo.actions';
 
 describe('TodoAddComponent', () => {
   let component: TodoAddComponent;

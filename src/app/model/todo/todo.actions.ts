@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Todo } from './todo.interface';
+import { Todo } from './../model.interface';
 
 
 export const ADD_TODO    = '[TODO] add';

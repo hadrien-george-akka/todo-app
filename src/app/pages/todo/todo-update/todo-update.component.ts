@@ -3,9 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { TodoService } from 'src/app/core/services/todo.service';
-import { Todo } from 'src/app/model/todo.interface';
-import * as TodoActions from '../../../model/todo.actions';
-import { getTodos } from 'src/app/model/todo.selectors';
+import { Todo } from 'src/app/model/model.interface';
+import * as TodoActions from '../../../model/todo/todo.actions';
+import { getTodos } from 'src/app/model/todo/todo.selectors';
 
 /**
  * Todo update component

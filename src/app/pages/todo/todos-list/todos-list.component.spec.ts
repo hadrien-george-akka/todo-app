@@ -10,8 +10,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 
 import { rootReducer , AppState} from '../../../app.reducer';
-import { Todo } from 'src/app/model/todo.interface';
-import * as TodoActions from '../../../model/todo.actions';
+import { Todo } from 'src/app/model/model.interface';
+import * as TodoActions from '../../../model/todo/todo.actions';
 import { TodosListComponent } from './todos-list.component';
 import { TodoDisplayComponent } from './todo-display/todo-display.component';
 import { TodoAddComponent } from './todo-add/todo-add.component';

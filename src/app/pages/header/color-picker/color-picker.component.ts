@@ -32,7 +32,7 @@ export class ColorPickerComponent implements OnInit {
    * Angular OnInit lifecyle override
    */
   ngOnInit() {
-    const storageClass = localStorage.getItem('color-picker');
+    const storageClass = localStorage.getItem('colorTheme');
 
     if (storageClass) {
       const classTheme = this.prefixClass + storageClass;

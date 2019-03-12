@@ -1,3 +1,8 @@
+export interface ApplicationState {
+  todos: Todo[];
+  colorTheme: string;
+}
+
 export interface Todo {
   id: number;
   title: string;

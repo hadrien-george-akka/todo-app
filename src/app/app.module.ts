@@ -18,8 +18,8 @@ import { Favicons } from './core/services/color-picker.service';
 import { routes } from './app.routing';
 import { TodoService } from './core/services/todo.service';
 import { ColorPickerService } from './core/services/color-picker.service';
-import { UpdateLocalStorageEffects } from './model/effects/update-local-storage.effects';
-import { SortTodosEffects } from './model/effects/sort-by-id.effects';
+import { UpdateLocalStorageEffects } from './model/todo/effects/update-local-storage.effects';
+import { SortTodosEffects } from './model/todo/effects/sort-by-id.effects';
 
 @NgModule({
   declarations: [

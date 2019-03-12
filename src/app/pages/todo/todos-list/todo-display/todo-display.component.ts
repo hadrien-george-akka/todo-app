@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
-import { Todo } from 'src/app/model/todo.interface';
-import * as TodoActions from '../../../../model/todo.actions';
+import { Todo } from 'src/app/model/model.interface';
+import * as TodoActions from '../../../../model/todo/todo.actions';
 import { Router } from '@angular/router';
 import { TodoService } from 'src/app/core/services/todo.service';
 
@@ -15,6 +15,9 @@ import { TodoService } from 'src/app/core/services/todo.service';
   styleUrls: ['./todo-display.component.scss']
 })
 export class TodoDisplayComponent implements OnInit {
+
+  /** Boolean is the user screen size of mobile */
+  public isMobile: boolean;
 
   /** Todo input to display */
   @Input() todo: Todo;
@@ -43,6 +46,8 @@ export class TodoDisplayComponent implements OnInit {
    * Angular OnInit lifecycle override
    */
   ngOnInit() {
+    this.isMobile = window.innerWidth < 600 ? true : false;
+
     // Initiate todo state value in checkbox
     this.todoFormGroup.get('stateTodoCtrl').setValue(this.todo.isComplete, {emitEvent: false});
 
@@ -51,8 +56,14 @@ export class TodoDisplayComponent implements OnInit {
       const action = new TodoActions.ToggleAction(this.todo.id);
       this.todoService.store.dispatch(action);
     });
+  }
 
-
+  /**
+   * Keep boolean isMobile updated when the windows resize
+   * @param event Resize windows event
+   */
+  @HostListener('window:resize', ['$event']) onresize(event) {
+    this.isMobile = window.innerWidth < 600 ? true : false;
   }
 
   /**

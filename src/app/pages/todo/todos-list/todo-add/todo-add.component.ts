@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { TodoService } from 'src/app/core/services/todo.service';
-import { Todo } from 'src/app/model/todo.interface';
-import * as TodoActions from '../../../../model/todo.actions';
+import { Todo } from 'src/app/model/model.interface';
+import * as TodoActions from '../../../../model/todo/todo.actions';
 
 /**
  * Add Todo component

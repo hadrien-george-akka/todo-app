@@ -1,4 +1,4 @@
-import { Todo } from './todo.interface';
+import { Todo } from './../model.interface';
 import * as TodoActions from './todo.actions';
 import { stat } from 'fs';
 

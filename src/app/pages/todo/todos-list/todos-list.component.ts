@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Todo } from '../../../model/todo.interface';
+import { Todo } from '../../../model/model.interface';
 
 import { TodoService } from '../../../core/services/todo.service';
-import { getTodos } from 'src/app/model/todo.selectors';
+import { getTodos } from 'src/app/model/todo/todo.selectors';
 
 /**
  * Display the current Todos list

@@ -6,12 +6,12 @@ import { StoreModule, Store } from '@ngrx/store';
 import {Location} from '@angular/common';
 
 import { rootReducer, AppState } from 'src/app/app.reducer';
-import * as TodoActions from '../../../model/todo.actions';
+import * as TodoActions from '../../../model/todo/todo.actions';
 import { TodoUpdateComponent } from './todo-update.component';
 import { TodoService } from 'src/app/core/services/todo.service';
 import { MyButtonComponent } from 'src/app/theme/my-button/my-button.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Todo } from 'src/app/model/todo.interface';
+import { Todo } from 'src/app/model/model.interface';
 import { ActivatedRoute, Router, convertToParamMap } from '@angular/router';
 import { of, Observable, from } from 'rxjs';
 

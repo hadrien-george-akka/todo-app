@@ -4,16 +4,13 @@
   color: red;
 }
 
-.checkbox-update {
-  margin: 0 0 0 30px;
+.textarea-update {
+  margin: 0 10px;
 }
 
 .input-update {
-  margin: 15px 0 0 30px;
-}
-
-.textarea-update {
-  @extend .checkbox-update;
+  @extend .textarea-update;
+  margin-top: 15px;
 }
 
 .material-icons {
@@ -28,4 +25,8 @@
 
 span, .header-text {
   margin-left: 10px;
+}
+
+mat-card {
+  margin-top: 10px;
 }
