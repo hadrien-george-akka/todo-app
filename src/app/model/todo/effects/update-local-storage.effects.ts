@@ -18,7 +18,7 @@ export class UpdateLocalStorageEffects {
 
   @Effect({dispatch: false})
   public updateTodos$ = this.actions$.pipe(
-    ofType(TodoActions.ADD_TODO, TodoActions.UPDATE_TODO, TodoActions.DELETE_TODO, TodoActions.TOGGLE_TODO),
+    ofType(TodoActions.POPULATE_TODOS, TodoActions.ADD_TODO, TodoActions.UPDATE_TODO, TodoActions.DELETE_TODO, TodoActions.TOGGLE_TODO),
     tap( () => {
       this.todoService.store.select(getTodos).subscribe(
         (todos) => {

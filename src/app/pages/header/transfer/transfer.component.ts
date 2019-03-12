@@ -2,10 +2,8 @@ import { Component, OnInit, Optional } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar, MatDialogRef } from '@angular/material';
 
-import { TodoService } from 'src/app/core/services/todo.service';
 import { snackbarConfig } from 'src/app/core/utils/config.utils';
 import { ApplicationState, Todo } from 'src/app/model/model.interface';
-import { ColorPickerService } from 'src/app/core/services/color-picker.service';
 
 /**
  * Transfer component in angular material dialog
@@ -23,8 +21,13 @@ export class TransferComponent implements OnInit {
   /** Data values in JSON to export */
   exportData: string;
 
+  /** Object containing all the application values to import from a JSON */
+  importValues: ApplicationState;
+
   /**
    * Component dependencies
+   * @param snackbar Material Snackbar message
+   * @param dialogRef Reference to a dialog opened with MatDialog service
    */
   constructor(
     private snackbar: MatSnackBar,
@@ -56,33 +59,34 @@ export class TransferComponent implements OnInit {
     inputElement.select();
     document.execCommand('copy');
 
-    console.log(this.transferFormGroup);
-
     this.snackbar.open('Copied text', 'X', snackbarConfig);
   }
 
+  /**
+   * Close the transfer dialog
+   * Give the ApplicationState object to import to the parent component
+   */
   importJson() {
-    const jsonText = this.transferFormGroup.get('importCtrl').value;
-    if (jsonText && this.isJson(jsonText)) {
-      const importValues: ApplicationState = JSON.parse(jsonText);
-
-      if (this.isApplicationStateValid(importValues)) {
-        this.dialogRef.close(importValues);
-      }
+    if (this.transferFormGroup.valid) {
+      this.dialogRef.close(this.importValues);
     }
   }
 
+  /**
+   * Check if the import field is valid
+   * Set errors in function of invalid reason
+   */
   checkImportValidity() {
     const importText = this.transferFormGroup.get('importCtrl').value;
 
-    if (importText && this.isJson(importText)) {
-      const importValues: ApplicationState = JSON.parse(importText);
+    if (importText && this.isJsonValid(importText)) {
+      this.importValues = JSON.parse(importText);
 
-      if (!this.isTodosValid(importValues.todos)) {
+      if (!this.isTodosValid(this.importValues.todos)) {
         this.transferFormGroup.get('importCtrl').setErrors({todosError: true});
       }
 
-      if (!this.isColorThemeValid(importValues.colorTheme)) {
+      if (!this.isColorThemeValid(this.importValues.colorTheme)) {
         this.transferFormGroup.get('importCtrl').setErrors({colorThemeError: true});
       }
     } else {
@@ -92,10 +96,10 @@ export class TransferComponent implements OnInit {
   }
 
   /**
-   * Return boolean true if a text is JSON format
-   * @param str String text to test if is a JSON
+   * Return boolean true if a text is a valid JSON format
+   * @param str String text to test if is a valid JSON
    */
-  isJson(str: string): boolean {
+  isJsonValid(str: string): boolean {
     try {
       JSON.parse(str);
     } catch (e) {
