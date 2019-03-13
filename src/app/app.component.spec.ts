@@ -4,14 +4,22 @@ import { ColorPickerComponent } from './pages/header/color-picker/color-picker.c
 import {
   RouterTestingModule
 } from '@angular/router/testing';
-import { MatButtonModule, MatMenuModule } from '@angular/material';
+import { MatButtonModule, MatMenuModule, MatFormFieldModule, MatDialogModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HeaderComponent } from './pages/header/header.component';
+import { TransferComponent } from './pages/header/transfer/transfer.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ColorPickerService, Favicons } from './core/services/color-picker.service';
+import { StoreModule } from '@ngrx/store';
+import { rootReducer } from './app.reducer';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
+        HeaderComponent,
+        TransferComponent,
         ColorPickerComponent
       ],
       imports: [
@@ -19,6 +27,14 @@ describe('AppComponent', () => {
         MatMenuModule,
         FlexLayoutModule,
         MatButtonModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        MatDialogModule,
+        StoreModule.forRoot(rootReducer)
+      ],
+      providers: [
+        ColorPickerService,
+        Favicons
       ]
     }).compileComponents();
   }));

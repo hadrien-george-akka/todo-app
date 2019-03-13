@@ -16,16 +16,14 @@ import { TodosListComponent } from './todos-list.component';
 import { TodoDisplayComponent } from './todo-display/todo-display.component';
 import { TodoAddComponent } from './todo-add/todo-add.component';
 import { MyButtonComponent } from '../../../theme/my-button/my-button.component';
-import { TodoService } from '../../../core/services/todo.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { of } from 'rxjs/internal/observable/of';
 
 
 describe('TodoListComponent', () => {
   let component: TodosListComponent;
   let fixture: ComponentFixture<TodosListComponent>;
   let store: Store<AppState>;
-  let route: ActivatedRoute;
-  let todoService: TodoService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -34,7 +32,6 @@ describe('TodoListComponent', () => {
         TodoDisplayComponent,
         TodoAddComponent,
         MyButtonComponent,
-        TestComponent
       ],
       imports: [
         BrowserAnimationsModule,
@@ -44,23 +41,14 @@ describe('TodoListComponent', () => {
         MatExpansionModule,
         MatFormFieldModule,
         MatInputModule,
-        RouterTestingModule.withRoutes([
-          {path: '', component: TestComponent}
-        ]),
         StoreModule.forRoot(rootReducer)
       ],
-      providers: [
-        TodoService
-      ]
     }).compileComponents();
   }));
 
   beforeEach(() => {
     store = TestBed.get(Store);
-    todoService = new TodoService(store);
-    spyOn(todoService.store, 'dispatch').and.callThrough();
-
-    route = TestBed.get(ActivatedRoute);
+    spyOn(store, 'dispatch').and.callThrough();
 
     fixture = TestBed.createComponent(TodosListComponent);
     component = fixture.componentInstance;
@@ -74,20 +62,35 @@ describe('TodoListComponent', () => {
 
   it('should populate the activeTodos and completeTodos', () => {
     const action = new TodoActions.PopulateTodosAction(testTodos);
-    todoService.store.dispatch(action);
+    store.dispatch(action);
     expect(component.activeTodos).toEqual(testActiveTodos);
     expect(component.completeTodos).toEqual(testCompleteTodos);
   });
-});
 
-@Component({
-  // tslint:disable-next-line:component-selector
-  selector: 'blank-cmp',
-  template: ``
-})
-// tslint:disable-next-line:component-class-suffix
-export class TestComponent {
-}
+  // it('should call populateActiveTodos and return list of active todos', () => {
+  //   const response: Todo[] = testTodos;
+  //   const action = new TodoActions.PopulateTodosAction(testTodos);
+  //   store.dispatch(action);
+  //   spyOn(store, 'select').and.returnValue(of(response));
+  //   component.populateActiveTodos();
+  //   fixture.detectChanges();
+
+  //   expect(component.activeTodos).toEqual(response);
+  // });
+
+  // it('should call populateCompleteTodos and return list of complete todos', () => {
+  //   const response: Todo[] = testTodos;
+  //   const action = new TodoActions.PopulateTodosAction(testTodos);
+  //   store.dispatch(action);
+  //   spyOn(store, 'select').and.returnValue(of(response));
+  //   component.populateCompleteTodos();
+  //   fixture.detectChanges();
+  //   console.log('---------LOOG => ', response);
+  //   console.log('---------LOOG => ', component.completeTodos);
+
+  //   expect(component.completeTodos).toEqual(response);
+  // });
+});
 
 export const testTodos: Todo[] = [
   {

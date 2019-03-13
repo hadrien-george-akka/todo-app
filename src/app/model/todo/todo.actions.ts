@@ -47,10 +47,7 @@ export class AddTodoAction implements Action {
   readonly type = ADD_TODO;
 
   constructor(
-    public id: number,
-    public title: string,
-    public description: string,
-    public isComplete: boolean
+    public todo: Todo
   ) {}
 }
 

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Todo } from '../../../model/model.interface';
+import { Store } from '@ngrx/store';
 
+import { AppState } from 'src/app/app.reducer';
+import { Todo } from '../../../model/model.interface';
+import { getActiveTodos, getCompleteTodos } from 'src/app/model/todo/todo.selectors';
 import { TodoService } from '../../../core/services/todo.service';
-import { getTodos } from 'src/app/model/todo/todo.selectors';
 
 /**
  * Display the current Todos list
@@ -15,38 +17,45 @@ export class TodosListComponent implements OnInit {
 
   /** Array of all existing todos */
   todos: Todo[];
+
   /** Array of uncomplete todos */
   activeTodos: Todo[];
+
   /** Array of complete todos */
   completeTodos: Todo[];
 
   /**
    * Component dependencies
-   * @param todoService Todo service
+   * @param store Ngrx store
    */
   constructor(
-    private todoService: TodoService
+    public store: Store<AppState>,
   ) {
-    this.todos = this.todoService.todoList.length === 0 ?
-      this.todoService.getTodoList() : this.todoService.todoList;
+
   }
 
   /**
    * Angular OnInit lifecycle override
    */
   ngOnInit() {
-    this.populateTodosByState();
+    this.populateActiveTodos();
+    this.populateCompleteTodos();
   }
 
   /**
-   * Populate the todos variables in function of todo state
+   * Populate the active todo list
    */
-  private populateTodosByState() {
-    this.todoService.store.select(getTodos)
-    .subscribe(todos => {
-      this.activeTodos = this.todoService.getActiveTodoList(todos);
-      this.completeTodos = this.todoService.getCompleteTodoList(todos);
-    });
+  populateActiveTodos() {
+    this.store.select(getActiveTodos)
+      .subscribe(todos => this.activeTodos = todos);
+  }
+
+  /**
+   * Populate the complete todo list
+   */
+  populateCompleteTodos() {
+    this.store.select(getCompleteTodos)
+      .subscribe(todos => this.completeTodos = todos);
   }
 
 }

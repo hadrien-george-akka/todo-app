@@ -1,5 +1,6 @@
 import * as TodoActions from './todo.actions';
 import { TodosReducer } from './todo.reducer';
+import { Todo } from '../model.interface';
 
 describe('TodosReducer', () => {
 
@@ -39,7 +40,13 @@ describe('TodosReducer', () => {
   });
 
   it('should return a new state with one new todo: AddTodoAction', () => {
-    const action = new TodoActions.AddTodoAction(2, 'new title', 'new description', false);
+    const newTodo: Todo = {
+      id: 2,
+      title: 'new title',
+      description: 'new description',
+      isComplete: false
+    };
+    const action = new TodoActions.AddTodoAction(newTodo);
     const oldState = [{ id: 1, title: 'todo', isComplete: false }];
     const newState = TodosReducer(oldState, action);
     expect(newState.length).toEqual(2);
@@ -59,6 +66,18 @@ describe('TodosReducer', () => {
     expect(newState.length).toEqual(1);
     expect(newState).not.toContain(oldState[0]);
     expect(newState[0].id).toEqual(2);
+  });
+
+  it('should return a new state with all todos sorted by descending id', () => {
+    const action = new TodoActions.SortTodoAction();
+    const oldState = [
+      { id: 1, title: 'one', isComplete: false },
+      { id: 2, title: 'two', isComplete: false },
+      { id: 3, title: 'three', isComplete: false },
+    ];
+    const newState = TodosReducer(oldState, action);
+    expect(newState[0].id).toEqual(oldState.length);
+    expect(newState[newState.length - 1].id).toEqual(1);
   });
 
 });

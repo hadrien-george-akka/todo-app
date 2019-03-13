@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
 
-import { TodoService } from 'src/app/core/services/todo.service';
-import { Todo } from 'src/app/model/model.interface';
+import { AppState } from 'src/app/app.reducer';
 import * as TodoActions from '../../../../model/todo/todo.actions';
+import { Todo } from 'src/app/model/model.interface';
+import { TodoService } from 'src/app/core/services/todo.service';
+import { getTodoMaxId } from 'src/app/model/todo/todo.selectors';
 
 /**
  * Add Todo component
@@ -13,7 +16,10 @@ import * as TodoActions from '../../../../model/todo/todo.actions';
   templateUrl: './todo-add.component.html',
   styleUrls: ['./todo-add.component.scss']
 })
-export class TodoAddComponent {
+export class TodoAddComponent implements OnInit {
+
+  /** Maximum id value in store */
+  maxId: number;
 
   /** Todo object to add */
   todo: Todo = {
@@ -30,12 +36,19 @@ export class TodoAddComponent {
   todoFormGroup: FormGroup;
 
   constructor(
-    private todoService: TodoService
+    public store: Store<AppState>,
   ) {
     // Initiate todo form group
     this.todoFormGroup = new FormGroup({
       titleTodoCtrl: new FormControl('', Validators.required),
       descriptionTodoCtrl: new FormControl('')
+    });
+
+  }
+
+  ngOnInit() {
+    this.store.select(getTodoMaxId).subscribe((todo) => {
+      this.maxId = todo ? todo.id : 0;
     });
   }
 
@@ -45,19 +58,17 @@ export class TodoAddComponent {
    */
   addTodo() {
     if (this.todoFormGroup.valid) {
-      this.todoService.maxId++;
+      this.maxId++;
 
-      this.todo.id = this.todoService.maxId;
+      this.todo.id = this.maxId;
       this.todo.title = this.todoFormGroup.get('titleTodoCtrl').value;
       this.todo.description = this.todoFormGroup.get('descriptionTodoCtrl').value;
 
-      const action = new TodoActions.AddTodoAction(this.todo.id, this.todo.title, this.todo.description, this.todo.isComplete);
-      this.todoService.store.dispatch(action);
-      // this.todoService.sortTodoList();
+      const action = new TodoActions.AddTodoAction(this.todo);
+      this.store.dispatch(action);
 
       this.togglePannel();
-      this.todoFormGroup.get('titleTodoCtrl').reset();
-      this.todoFormGroup.get('descriptionTodoCtrl').reset();
+      this.todoFormGroup.reset();
     }
   }
 
@@ -66,6 +77,10 @@ export class TodoAddComponent {
    */
   togglePannel() {
     this.pannelExpanded = !this.pannelExpanded;
+  }
+
+  get titleTodoCtrl() {
+    return this.todoFormGroup.get('titleTodoCtrl');
   }
 
 }

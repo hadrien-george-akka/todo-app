@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import { AppState } from 'src/app/app.reducer';
+import * as TodoActions from '../../model/todo/todo.actions';
+import { TodoService } from 'src/app/core/services/todo.service';
 
 @Component({
   selector: 'app-todos',
@@ -7,9 +12,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public store: Store<AppState>,
+    private todoService: TodoService
+    ) { }
 
   ngOnInit() {
+    this.store.dispatch(new TodoActions.PopulateTodosAction(this.todoService.getTodoListFromLocalStorage()));
+    this.store.dispatch(new TodoActions.SortTodoAction());
   }
 
 }

@@ -14,7 +14,6 @@ import { Todo } from 'src/app/model/model.interface';
 import * as TodoActions from '../../../../model/todo/todo.actions';
 import { TodoDisplayComponent } from './todo-display.component';
 import { TodoService } from 'src/app/core/services/todo.service';
-import { TestingCompiler } from '@angular/core/testing/src/test_compiler';
 import { Component } from '@angular/core';
 
 describe('TodoDisplayComponent', () => {
@@ -24,7 +23,6 @@ describe('TodoDisplayComponent', () => {
   let route: ActivatedRoute;
   let router: Router;
   let location: Location;
-  let todoService: TodoService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -40,9 +38,9 @@ describe('TodoDisplayComponent', () => {
         MatExpansionModule,
         StoreModule.forRoot(rootReducer),
         RouterTestingModule.withRoutes([
-          {path: '', redirectTo: 'list', pathMatch: 'full'},
-          {path: 'list', component: TestComponent},
-          {path: 'update/:id', component: TestUpdateComponent}
+          {path: '', redirectTo: 'todo/list', pathMatch: 'full'},
+          {path: 'todo/list', component: TestComponent},
+          {path: 'todo/update/:id', component: TestUpdateComponent}
         ]),
       ],
       providers: [
@@ -53,8 +51,7 @@ describe('TodoDisplayComponent', () => {
 
   beforeEach(() => {
     store = TestBed.get(Store);
-    todoService = new TodoService(store);
-    spyOn(todoService.store, 'dispatch').and.callThrough();
+    spyOn(store, 'dispatch').and.callThrough();
 
     route = TestBed.get(ActivatedRoute);
     router = TestBed.get(Router);
@@ -81,19 +78,19 @@ describe('TodoDisplayComponent', () => {
   it('should dispatch an action when stateTodoCtrl change state', () => {
     component.todoFormGroup.get('stateTodoCtrl').setValue(true);
     const action = new TodoActions.ToggleAction(component.todo.id);
-    expect(todoService.store.dispatch).toHaveBeenCalledWith(action);
+    expect(store.dispatch).toHaveBeenCalledWith(action);
   });
 
   it('should navigate to update route', fakeAsync(() => {
     component.showTodoUpdate();
     tick();
-    expect(location.path()).toBe('/update/42');
+    expect(location.path()).toBe('/todo/update/42');
   }));
 
   it('should delete the todo input', () => {
     component.deleteTodo();
     const action = new TodoActions.DeleteTodoAction(component.todo.id);
-    expect(todoService.store.dispatch).toHaveBeenCalledWith(action);
+    expect(store.dispatch).toHaveBeenCalledWith(action);
   });
 });
 

@@ -18,6 +18,9 @@
               formControlName="titleTodoCtrl"
               maxlength="30"
               required/>
+              <mat-error *ngIf="titleTodoCtrl.errors">
+                Title cannot be empty
+              </mat-error>
           </mat-form-field>
           <mat-form-field class="textarea-update">
             <textarea 
@@ -33,7 +36,7 @@
         </div>
       </form>
     </mat-card-content>
-    <div fxLayout="row" fxLayoutAlign="end">
+    <div *ngIf="isTodoExist" fxLayout="row" fxLayoutAlign="end">
       <app-my-button [text]="'Save'" [disable]="!todoFormGroup.valid" (click)="updateTodo()"></app-my-button>
     </div>
   </mat-card>

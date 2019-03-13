@@ -15,7 +15,7 @@ export class SortTodosEffects {
 
   @Effect()
   public sortTodo$ = this.actions$.pipe(
-    ofType(TodoActions.ADD_TODO),
+    ofType(TodoActions.POPULATE_TODOS, TodoActions.ADD_TODO),
     mapTo(
       new TodoActions.SortTodoAction()
     )

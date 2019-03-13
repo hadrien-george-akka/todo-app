@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material';
+import { Store } from '@ngrx/store';
 
+import { AppState } from 'src/app/app.reducer';
+import * as TodoActions from '../../model/todo/todo.actions';
 import { TransferComponent } from './transfer/transfer.component';
 import { ColorPickerService } from 'src/app/core/services/color-picker.service';
 import { ApplicationState } from 'src/app/model/model.interface';
-import * as TodoActions from '../../model/todo/todo.actions';
-import { TodoService } from 'src/app/core/services/todo.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,7 @@ import { TodoService } from 'src/app/core/services/todo.service';
 export class HeaderComponent implements OnInit {
 
   constructor(
-    private todoService: TodoService,
+    public store: Store<AppState>,
     private colorPickerService: ColorPickerService,
     private dialog: MatDialog
   ) { }
@@ -32,7 +33,7 @@ export class HeaderComponent implements OnInit {
     dialogRef.afterClosed().subscribe((value: ApplicationState) => {
       if (value) {
         this.colorPickerService.setColorClass(value.colorTheme);
-        this.todoService.store.dispatch(new TodoActions.PopulateTodosAction(value.todos));
+        this.store.dispatch(new TodoActions.PopulateTodosAction(value.todos));
       }
     });
   }

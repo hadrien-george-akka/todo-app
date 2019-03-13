@@ -1,10 +1,11 @@
 import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
 
+import { AppState } from 'src/app/app.reducer';
 import { Todo } from 'src/app/model/model.interface';
 import * as TodoActions from '../../../../model/todo/todo.actions';
-import { Router } from '@angular/router';
-import { TodoService } from 'src/app/core/services/todo.service';
 
 /**
  * Display one todo for list todo
@@ -33,8 +34,8 @@ export class TodoDisplayComponent implements OnInit {
    * @param todoService Todo service
    */
   constructor(
+    public store: Store<AppState>,
     private router: Router,
-    private todoService: TodoService
   ) {
     // Initiate todo form group
     this.todoFormGroup = new FormGroup({
@@ -54,7 +55,7 @@ export class TodoDisplayComponent implements OnInit {
     // Manage todo state value when changes
     this.todoFormGroup.get('stateTodoCtrl').valueChanges.subscribe(state => {
       const action = new TodoActions.ToggleAction(this.todo.id);
-      this.todoService.store.dispatch(action);
+      this.store.dispatch(action);
     });
   }
 
@@ -79,7 +80,7 @@ export class TodoDisplayComponent implements OnInit {
   deleteTodo() {
     const id = this.todo.id;
     const action = new TodoActions.DeleteTodoAction(id);
-    this.todoService.store.dispatch(action);
+    this.store.dispatch(action);
   }
 
 }

@@ -42,10 +42,10 @@ export function TodosReducer(state: Todo[] = initialState, action: TodoActions.T
       return [
         ...state,
         {
-          id: action.id,
-          title: action.title,
-          description: action.description,
-          isComplete: action.isComplete
+          id: action.todo.id,
+          title: action.todo.title,
+          description: action.todo.description,
+          isComplete: action.todo.isComplete
         }
       ];
     }

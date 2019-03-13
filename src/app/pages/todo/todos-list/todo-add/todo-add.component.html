@@ -17,6 +17,9 @@
         formControlName="titleTodoCtrl"
         maxlength="30"
         required/>
+        <mat-error *ngIf="titleTodoCtrl.errors">
+          Title cannot be empty
+        </mat-error>
       </mat-form-field>
       <mat-form-field>
         <textarea 

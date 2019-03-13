@@ -8,18 +8,17 @@ import {Location} from '@angular/common';
 import { rootReducer, AppState } from 'src/app/app.reducer';
 import * as TodoActions from '../../../model/todo/todo.actions';
 import { TodoUpdateComponent } from './todo-update.component';
-import { TodoService } from 'src/app/core/services/todo.service';
 import { MyButtonComponent } from 'src/app/theme/my-button/my-button.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Todo } from 'src/app/model/model.interface';
 import { ActivatedRoute, Router, convertToParamMap } from '@angular/router';
-import { of, Observable, from } from 'rxjs';
+import { of } from 'rxjs';
+import { getTodoById } from 'src/app/model/todo/todo.selectors';
 
 describe('TodoUpdateComponent', () => {
   let component: TodoUpdateComponent;
   let fixture: ComponentFixture<TodoUpdateComponent>;
   let store: Store<AppState>;
-  let todoService: TodoService;
   let route: ActivatedRoute;
   let router: Router;
   let location: Location;
@@ -40,18 +39,25 @@ describe('TodoUpdateComponent', () => {
         StoreModule.forRoot(rootReducer),
         RouterTestingModule
           .withRoutes([
-            {path: '', redirectTo: 'list', pathMatch: 'full'},
-            {path: 'list', component: TestComponent},
-            {path: 'update/:id', component: TestUpdateComponent}
+            {path: '', redirectTo: 'todo/list', pathMatch: 'full'},
+            {path: 'todo/list', component: TestComponent},
+            {path: 'todo/update/:id', component: TestUpdateComponent}
         ]),
       ],
       providers: [
-        TodoService,
         // {
         //   provide: ActivatedRoute, useValue: {
         //     paramMap: of(convertToParamMap({ id: 3 }))
         //   }
         // }
+        {
+          provide: ActivatedRoute, useValue: {
+            snapshot: {
+              paramMap: convertToParamMap({ id: 3 })
+            }
+          }
+
+        }
       ]
     })
     .compileComponents();
@@ -59,8 +65,7 @@ describe('TodoUpdateComponent', () => {
 
   beforeEach(() => {
     store = TestBed.get(Store);
-    todoService = new TodoService(store);
-    spyOn(todoService.store, 'dispatch').and.callThrough();
+    spyOn(store, 'dispatch').and.callThrough();
 
     route = TestBed.get(ActivatedRoute);
     router = TestBed.get(Router);
@@ -70,33 +75,51 @@ describe('TodoUpdateComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
 
-    component.todo = testTodo;
+    // component.todo = testTodo;
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should update todo when form is valid', () => {
+  it('should return the paramMap id of angular activated route', () => {
+    expect(component.getTodoId()).toEqual(3);
+  });
+
+  it('should get the todo from paramMap id', () => {
+    const action = new TodoActions.PopulateTodosAction(testTodos);
+    store.dispatch(action);
+    expect(component.todo).toBe(testTodos[2]);
+  });
+
+  it('should update todo', () => {
+    const populate = new TodoActions.PopulateTodosAction(testTodos);
+    store.dispatch(populate);
     component.todoFormGroup.get('titleTodoCtrl').setValue('update title');
     component.todoFormGroup.get('descriptionTodoCtrl').setValue('update description');
     component.updateTodo();
-    const action = new TodoActions.UpdateAction(component.todo.id, 'update title', 'update description');
-    expect(todoService.store.dispatch).toHaveBeenCalledWith(action);
+    const action = new TodoActions.UpdateAction(component.getTodoId(), 'update title', 'update description');
+    expect(store.dispatch).toHaveBeenCalledWith(action);
+
+    let todoUpdate: Todo;
+    store.select(getTodoById(3)).subscribe(todo => todoUpdate = todo);
+    expect(todoUpdate.id).toBe(3);
+    expect(todoUpdate.title).toBe('update title');
+    expect(todoUpdate.description).toBe('update description');
   });
 
-  it('should not update todo when form is invalid', () => {
+  it('should not update todo if form is invalid', () => {
     component.todoFormGroup.get('titleTodoCtrl').setValue(null);
     component.todoFormGroup.get('descriptionTodoCtrl').setValue(null);
     component.updateTodo();
-    const action = new TodoActions.UpdateAction(component.todo.id, null, null);
-    expect(todoService.store.dispatch).not.toHaveBeenCalledWith(action);
+    const action = new TodoActions.UpdateAction(component.getTodoId(), null, null);
+    expect(store.dispatch).not.toHaveBeenCalledWith(action);
   });
 
   it('should navigate to list route', fakeAsync(() => {
     component.navigateToList();
     tick();
-    expect(location.path()).toBe('/list');
+    expect(location.path()).toBe('/todo/list');
   }));
 });
 
@@ -119,4 +142,32 @@ export class TestUpdateComponent {
 }
 
 
-export const testTodo: Todo = {id: 3, title: 'Call mom', isComplete: true};
+export const testTodos: Todo[] = [
+  {
+    id: 1,
+    title: 'Groceries',
+    description: '-Eggs \n- Bread\n- Cereal',
+    isComplete: false
+  },
+  {
+    id: 2,
+    title: 'Deposit christmas check',
+    isComplete: true
+  },
+  {
+    id: 3,
+    title: 'Call mom',
+    isComplete: true
+  },
+  {
+    id: 4,
+    title: 'Walk the dog',
+    isComplete: false
+  },
+  {
+    id: 5,
+    title: 'Book train ticket',
+    description: 'Train 02/06/19 Departure TOULOUSE at 10:23 - Arrival PARIS at 17:42',
+    isComplete: false
+  }
+];

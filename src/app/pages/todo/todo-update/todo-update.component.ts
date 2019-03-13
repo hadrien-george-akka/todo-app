@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { TodoService } from 'src/app/core/services/todo.service';
-import { Todo } from 'src/app/model/model.interface';
+import { AppState } from 'src/app/app.reducer';
 import * as TodoActions from '../../../model/todo/todo.actions';
-import { getTodos } from 'src/app/model/todo/todo.selectors';
+import { Todo } from 'src/app/model/model.interface';
+import { TodoService } from 'src/app/core/services/todo.service';
+import { getTodos, getTodoById } from 'src/app/model/todo/todo.selectors';
 
 /**
  * Todo update component
@@ -16,6 +18,9 @@ import { getTodos } from 'src/app/model/todo/todo.selectors';
   styleUrls: ['./todo-update.component.scss']
 })
 export class TodoUpdateComponent implements OnInit {
+
+  /** Id value of todo to update from route param */
+  idTodo: number;
 
   /** Todo object to updates */
   todo: Todo;
@@ -36,7 +41,7 @@ export class TodoUpdateComponent implements OnInit {
    * @param activatedRoute Angular current active route
    */
   constructor(
-    private todoService: TodoService,
+    public store: Store<AppState>,
     private router: Router,
     private activatedRoute: ActivatedRoute,
   ) {
@@ -51,9 +56,14 @@ export class TodoUpdateComponent implements OnInit {
    * Angular OnInit lifecycle override
    */
   ngOnInit() {
-    // Get todo values
-    this.todo = this.getTodo();
-    this.isTodoExist = this.todo ? true : false;
+    // Get the id of the todo to update
+    this.idTodo = this.getTodoId();
+
+    // Get todo object from id value
+    this.store.select(getTodoById(this.idTodo)).subscribe(todo => {
+      this.todo = todo;
+      this.isTodoExist = this.todo ? true : false;
+    });
 
     // Initiate todo form controls
     if (this.isTodoExist) {
@@ -64,17 +74,10 @@ export class TodoUpdateComponent implements OnInit {
   }
 
   /**
-   * Get todo to update from route param id
+   * Return todo id to update from route param id
    */
-  getTodo(): Todo {
-    const id = +this.activatedRoute.snapshot.paramMap.get('id');
-    let todoToUpdate: Todo;
-
-    this.todoService.store.select(getTodos).subscribe(todos => {
-      todoToUpdate = this.todoService.getTodoById(todos, id);
-    });
-
-    return todoToUpdate;
+  getTodoId(): number {
+    return +this.activatedRoute.snapshot.paramMap.get('id');
   }
 
   /**
@@ -92,7 +95,7 @@ export class TodoUpdateComponent implements OnInit {
       };
 
       const action = new TodoActions.UpdateAction(todoUpdated.id, todoUpdated.title, todoUpdated.description);
-      this.todoService.store.dispatch(action);
+      this.store.dispatch(action);
 
       this.navigateToList();
     }
@@ -103,5 +106,9 @@ export class TodoUpdateComponent implements OnInit {
    */
   navigateToList() {
     this.router.navigateByUrl('/todo/list');
+  }
+
+  get titleTodoCtrl() {
+    return this.todoFormGroup.get('titleTodoCtrl');
   }
 }

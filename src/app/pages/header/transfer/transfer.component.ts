@@ -31,7 +31,7 @@ export class TransferComponent implements OnInit {
    */
   constructor(
     private snackbar: MatSnackBar,
-    private dialogRef: MatDialogRef<TransferComponent>
+    public dialogRef: MatDialogRef<TransferComponent>
   ) {
     this.transferFormGroup = new FormGroup({
       importCtrl: new FormControl('', Validators.required),
@@ -83,14 +83,17 @@ export class TransferComponent implements OnInit {
       this.importValues = JSON.parse(importText);
 
       if (!this.isTodosValid(this.importValues.todos)) {
+        console.log('++++++++++ TODO ERROR', this.importValues.todos);
         this.transferFormGroup.get('importCtrl').setErrors({todosError: true});
       }
 
       if (!this.isColorThemeValid(this.importValues.colorTheme)) {
         this.transferFormGroup.get('importCtrl').setErrors({colorThemeError: true});
+        console.log('++++++++++ COLOR ERROR', this.importValues);
       }
     } else {
       this.transferFormGroup.get('importCtrl').setErrors({jsonError: true});
+      console.log('++++++++++ JSON ERROR');
     }
 
   }
@@ -132,8 +135,9 @@ export class TransferComponent implements OnInit {
     if (todos) {
       let isValid = true;
       for (let todo of todos) {
-        if (!todo.id) { isValid = false; }
-        if (!todo.title) { isValid = false; }
+        if (!todo.id) { isValid = false; console.log('id'); }
+        if (!todo.title) { isValid = false; console.log('title'); }
+        if (todo.isComplete === null || todo.isComplete === undefined) { isValid = false; console.log('isComplete'); }
       }
       return isValid;
     } else {
