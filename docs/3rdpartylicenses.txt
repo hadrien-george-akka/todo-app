@@ -116,11 +116,15 @@ THE SOFTWARE.
 
 @angular/material/checkbox
 
+@angular/material/dialog
+
 @angular/material/expansion
 
 @angular/material/form-field
 
 @angular/material/menu
+
+@angular/material/snack-bar
 
 @angular/platform-browser
 MIT
